@@ -1,6 +1,5 @@
 
 const axios = require("axios")
-// const { Router } = require("express");
 const { Videogame, Gender } = require("../db")
 const { API_KEY } = process.env;
 
