@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Container,
     LogoContainer,
@@ -18,9 +18,19 @@ import {
 } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { IoLogoGameControllerB } from "react-icons/io";
+import Search from "./Search";
+import { useDispatch, useSelector } from "react-redux";
 
-const Nav = () => {
+
+const Nav = ({handleSort}) => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const dispatch = useDispatch()
+    const [orden, setOrden] = useState('')
+    const [currentPage, setCurrentPage] = useState(1)
+    const games = useSelector(state => state.games)
+    
+   
+    
 
     return (
         <Container>
@@ -37,27 +47,24 @@ const Nav = () => {
                     </MobileIcon>
 
                     <Menu open={showMobileMenu}>
+                                <div>
+                                    <Search></Search>
+                                </div>
                         <MenuItem>
                             <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+
                                 <div>
                                     <FaHome />
                                     HOME
                                 </div>
                             </MenuItemLink>
                         </MenuItem>
-                        <MenuItem>
-                            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                                <div>
-                                    <FaUserAlt />
-                                    CREATE GAME
-                                </div>
-                            </MenuItemLink>
-                        </MenuItem>
+
                         <MenuItem>
                             <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
                                 <div>
                                     <FaBriefcase />
-                                    <select>
+                                    <select onClick={e => handleSort(e)}>
                                         <option value="Order by Name">ORDER BY NAME</option>
                                         <option value="Asc">FROM A TO Z</option>
                                         <option value="Desc">FROM Z TO A</option>
@@ -70,6 +77,14 @@ const Nav = () => {
                                 <div >
                                     <FaGlasses />
                                     ORDER BY WEIGHT
+                                </div>
+                            </MenuItemLink>
+                        </MenuItem>
+                        <MenuItem>
+                            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                                <div>
+                                    <FaUserAlt />
+                                    CREATE GAME
                                 </div>
                             </MenuItemLink>
                         </MenuItem>

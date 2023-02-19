@@ -1,8 +1,11 @@
-
+import { Link } from "react-router-dom"
 const LandingPage = () => {
     return (
         <div>
-            soy la landing
+            <h1> GAMES PAGE</h1>
+            <Link to="/home">
+                <button>HOME</button>
+            </Link>
         </div>
     )
 }

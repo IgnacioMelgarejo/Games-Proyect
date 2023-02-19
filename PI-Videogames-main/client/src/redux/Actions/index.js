@@ -11,3 +11,22 @@ export const getVideoGames = () => {
 }
 
 
+export const getNameGame = (name) => {
+    return async function (dispatch) {
+        let json = await axios(`http://localhost:3001/videoGames?name=${name}`);
+        return dispatch({
+            type: "GET_NAME_GAME",
+            payload: json.data
+        });
+    }
+}
+
+
+export const orderByName = (payload) => {
+    console.log(payload)
+    return {
+        type: "ORDER_BY_NAME",
+        payload
+        
+    }
+}

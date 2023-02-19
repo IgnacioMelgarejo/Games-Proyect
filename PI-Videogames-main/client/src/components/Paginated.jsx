@@ -8,7 +8,7 @@ export default function Paginado({ gamesPerPage, games, paginated }) {
     for (let i = 0; i < Math.ceil(games / gamesPerPage); i++) {
         pageNumber.push(i + 1)
     }
-    //si tengo el arreglo pageNumber lo mapeo y duvuevlo cada uno de los numeros que devuelva el paginado ↓↓+ñ
+    //si tengo el arreglo pageNumber lo mapeo y duvuevlo cada uno de los numeros que devuelva el paginado ↓↓
 
     return (
         <nav>

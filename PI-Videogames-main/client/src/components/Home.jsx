@@ -1,5 +1,5 @@
 import React from "react";
-import { getVideoGames } from "../redux/actions/index";
+import { getVideoGames, orderByName } from "../redux/actions/index";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom";
@@ -11,6 +11,8 @@ import "./CSS/Home.css"
 const Home = () => {
     const games = useSelector((state) => state.games)
     const dispatch = useDispatch()
+
+    const [orden, setOrden] = useState('')
 
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -31,10 +33,19 @@ const Home = () => {
         dispatch(getVideoGames())
     }, [dispatch])
 
+
+    const handleSort = (e) => {
+        e.preventDefault()
+        dispatch(orderByName(e.target.value))
+        setCurrentPage(1)
+        setOrden(`Ordenando ${e.target.value}`)
+    }
+
     return (
 
         <div>
-            <Nav></Nav>
+            <Nav handleSort={handleSort} ></Nav>
+            
             <Paginated
                 gamesPerPage={gamesPerPage}
                 games={games.length}
@@ -59,47 +70,3 @@ export default Home;
 
 
 
-/*import react from react
-import {useState, useEffect} from "react-dom"
-import {useSelector, useDispatch} from"react-redux"
-const home =()=>{
-    const getGames=useSelector((state)=>state.games)
-
-    const [currentGame, setCurrentGame]= useState(1)
-    const [gamesPerPage] = useState(15)
-    const indexForLastGame = currentGame * gamesPerPage
-    const indexForFirstGame = indexOfLastGame - gamesPerPage
-    currentPage = getGames.slice(indexFirstGame,indexforlastGame)
-
-    useEffect(=>{
-       dispatch(getGames())
-    },[dispatch])
-
-   const paginado = (pageNumber)=>{
-    setCurrenpage(pagenumber)
-
-   }
-   return(
-    <>
-    <paginated
-    pageNumber={pagenumber}
-    games={games.length}
-    paginado={paginado}
-    />
-    {
-currentPage?.map(game=>{
-    <Link>
-    <cards>
-        game.name,
-    game.image
-    <cards>
-    <Link/>
-
-})
-    }
-    </>
-   )
-}
-
-
-*/

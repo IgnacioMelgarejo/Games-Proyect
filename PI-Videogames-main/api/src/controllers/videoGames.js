@@ -37,7 +37,6 @@ const get_VideoGames = async (req, res) => {
     try {
         const { name } = req.query
         let videoGames = await get_All_VideoGames()
-        console.log(videoGames.gender)
         if (name) {
             const VideoGameName = videoGames.filter(
                 e => e.name.toLowerCase().includes(name.toLowerCase()))
