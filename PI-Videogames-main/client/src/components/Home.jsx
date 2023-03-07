@@ -1,12 +1,12 @@
 import React from "react";
-import { getVideoGames, orderByName } from "../redux/actions/index";
+import { getGender, getVideoGames, orderByGender, orderByName } from "../redux/actions/index";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom";
 import Paginated from "./Paginated"
 import Cards from "./Cards"
 import Nav from "./Nav"
-import "./CSS/Home.css"
+import s from "./CSS/Home.module.css"
 
 const Home = () => {
     const games = useSelector((state) => state.games)
@@ -31,31 +31,39 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getVideoGames())
+        dispatch(getGender())
     }, [dispatch])
 
 
     const handleSort = (e) => {
         e.preventDefault()
+        console.log(e)
         dispatch(orderByName(e.target.value))
+        setCurrentPage(1)
+        setOrden(`Ordenando ${e.target.value}`)
+    }
+    const handleGender = (e) => {
+        e.preventDefault()
+        dispatch(orderByGender(e.target.value))
         setCurrentPage(1)
         setOrden(`Ordenando ${e.target.value}`)
     }
 
     return (
 
-        <div>
-            <Nav handleSort={handleSort} ></Nav>
+        <div className={s.marginTop}>
+            <Nav handleSort={handleSort} handleGender={handleGender} ></Nav>
             
             <Paginated
                 gamesPerPage={gamesPerPage}
                 games={games.length}
                 paginated={paginado}
             />
-            <div className="this">
+            <div className={s.this}>
                 {currentGame?.map((e) => {
                     return (
                         <div key={e.id}>
-                            <Link className="link-card" to={`/game/${e.id}`}>
+                            <Link className={s.linkCard} to={`/game/${e.id}`}>
                                 <Cards id={e.id} name={e.name} image={e.image} />
                             </Link>
                         </div>
@@ -70,3 +78,14 @@ export default Home;
 
 
 
+/*bueno hagamos un codiguito para practicar 
+import react from react 
+import ]{Link} from 'react-router-dom'
+import {useState, useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+
+
+const Home = ()=>{
+    [order, SetOrder]= useState(0)
+}
+*/

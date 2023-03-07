@@ -1,0 +1,158 @@
+* {
+    text-decoration: none;
+    text-transform: capitalize;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+ .search{
+    display: inline-block;
+    vertical-align: middle
+ }
+ 
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    padding: 1px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+
+}
+
+.logo {
+    font-weight: bolder;
+    font-size: 35px;
+    color: black;
+
+}
+
+.r {
+    display: flex;
+    justify-content: center;
+}
+
+.r>li {
+    position: relative;
+    height: 30px;
+}
+
+.nav ul {
+    list-style: none;
+}
+
+.nav ul li {
+    position: relative;
+    float: left;
+    font-size: 15px;
+    padding: 15px;
+    color: #333;
+    display: block;
+}
+
+.nav ul li :hover {
+    background: #333;
+    color: #ffffff;
+    padding: 15px;
+}
+
+
+.h:hover{
+    background: #333;
+    color: #fff; 
+    padding: 15px;
+}
+
+
+.rSel {
+    margin-top: -14px;
+    position: relative;
+}
+
+
+.myselect {
+    border: none;
+    outline: none;
+    background-color: inherit;
+    color: inherit;
+    font-size: inherit;
+    border: inherit;
+    padding: inherit;
+}
+
+.myselect:hover {
+    background: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+
+.toggle{
+    display: none;
+}
+
+.container label{
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    display: none;
+}
+
+
+
+
+@media(max-width:991px){/* 991 es el maximo*/
+    
+    .container{
+        padding: 20px;
+    }
+
+    .container label{
+        display: initial;
+    }
+
+ 
+     .nav{
+        position:absolute;
+        top:100%; left: 0; right: 0;
+        background: #fff;
+        border-top: 1px solid rgba(0,0,0,.1 );
+    }
+    
+    .r{
+        display: none;
+    }
+
+    
+    .nav ul li ul{
+        position: relative;
+        width: 100%;
+    }
+    .toggle{
+        display: block;
+        color:#021222;
+        margin-right: 20px;
+        font-size: 30px;
+        transform: rotate(90deg);
+        transition: .3s;
+    }
+    .logo {
+        display: flex;
+        justify-content: space-between;
+        width: 100vw;
+        background-color: aqua;
+    }
+    
+    
+}
+
+
+
+
+
+

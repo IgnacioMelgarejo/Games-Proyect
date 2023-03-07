@@ -1,97 +1,69 @@
-import React, { useState, useEffect } from "react";
-import {
-    Container,
-    LogoContainer,
-    Wrapper,
-    Menu,
-    MenuItem,
-    MenuItemLink,
-    MobileIcon,
-} from "./CSS/Nav.element";
-import {
-    FaBars,
-    FaTimes,
-    FaHome,
-    FaUserAlt,
-    FaBriefcase,
-    FaGlasses,
-} from "react-icons/fa";
-import { IconContext } from "react-icons";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { IoLogoGameControllerB } from "react-icons/io";
 import Search from "./Search";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import s from "./CSS/Nav.module.css"
 
 
-const Nav = ({handleSort}) => {
-    const [showMobileMenu, setShowMobileMenu] = useState(false);
-    const dispatch = useDispatch()
-    const [orden, setOrden] = useState('')
-    const [currentPage, setCurrentPage] = useState(1)
-    const games = useSelector(state => state.games)
-    
-   
-    
+const Nav = ({ handleSort, handleGender }) => {
+
+
+    const gender = useSelector(state => state.gender)
+
+
 
     return (
-        <Container>
-            <Wrapper>
-                <IconContext.Provider value={{ style: { fontSize: "2em" } }}>
-                    <LogoContainer>
-                        <IoLogoGameControllerB />
-                        <p>Games -</p>
-                        <p>X</p>
-                    </LogoContainer>
+        <div className={s.container}>
+            
+            <div className={s.logo}>
+                <IoLogoGameControllerB />
+                <div className={s.toggle}>
+                    |||
+                </div>
+            </div>
 
-                    <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                        {showMobileMenu ? <FaTimes /> : <FaBars />}
-                    </MobileIcon>
+            <div >
+                <Search className={s.search}></Search>
+            </div>
 
-                    <Menu open={showMobileMenu}>
-                                <div>
-                                    <Search></Search>
-                                </div>
-                        <MenuItem>
-                            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
 
-                                <div>
-                                    <FaHome />
-                                    HOME
-                                </div>
-                            </MenuItemLink>
-                        </MenuItem>
+            <nav className={s.nav}>
 
-                        <MenuItem>
-                            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                                <div>
-                                    <FaBriefcase />
-                                    <select onClick={e => handleSort(e)}>
-                                        <option value="Order by Name">ORDER BY NAME</option>
-                                        <option value="Asc">FROM A TO Z</option>
-                                        <option value="Desc">FROM Z TO A</option>
-                                    </select>
-                                </div>
-                            </MenuItemLink>
-                        </MenuItem>
-                        <MenuItem>
-                            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                                <div >
-                                    <FaGlasses />
-                                    ORDER BY WEIGHT
-                                </div>
-                            </MenuItemLink>
-                        </MenuItem>
-                        <MenuItem>
-                            <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                                <div>
-                                    <FaUserAlt />
-                                    CREATE GAME
-                                </div>
-                            </MenuItemLink>
-                        </MenuItem>
-                    </Menu>
-                </IconContext.Provider>
-            </Wrapper>
-        </Container>
+
+                <ul className={s.r}>
+
+                    <li className={s.rSel}>
+                        <select className={s.myselect} onClick={e => handleSort(e)}>
+                            <option value="Order by Name">ORDER BY NAME</option>
+                            <option value="Asc">FROM A TO Z</option>
+                            <option value="Desc">FROM Z TO A</option>
+                        </select>
+                    </li>
+
+                    <li className={s.rSel}>
+                        <select className={s.myselect} onChange={e => handleGender(e)}>
+                            <option value="Order by Gender">ORDER BY GENDER</option>
+                            {gender.map((g, id) =>
+                                <option key={id} value={g.name}>{g.name}</option>
+                            )}
+                        </select>
+                    </li>
+
+                    <Link to="/create">
+                        <li className={s.h}>
+                            CREATE GAME
+                        </li>
+                    </Link>
+
+                </ul>
+
+
+
+            </nav>
+
+        </div>
+
     );
 };
 

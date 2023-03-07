@@ -1,0 +1,44 @@
+/*Cambiar el nombre de div y input porque agarra el global */
+.div{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: beige;
+}
+
+.form-register{
+    width: 400px;
+    padding: 30px;
+    background:#24303c;
+    margin:auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family: 'calibri';
+
+}
+
+.form-register h4 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.input{
+    width: 100%;
+    background: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #1f53c5;
+    font-family: "calibri";
+    font-size: 18px;
+}
+
+.drop-botton{
+    width: 100%;
+    border: 1px solid #1f53c5;
+    background-color:#24303c ;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    padding: 5px;
+    font-size: 18px;
+}

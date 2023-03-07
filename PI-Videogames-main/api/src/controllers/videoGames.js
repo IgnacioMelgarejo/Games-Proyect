@@ -1,6 +1,6 @@
 
 const axios = require("axios")
-const { Videogame, Gender } = require("../db")
+const { Videogame, Gender, Platform } = require("../db")
 const { API_KEY } = process.env;
 
 
@@ -29,6 +29,7 @@ const get_All_VideoGames = async () => {
             });
         });
     }
+    console.log("este es", array.plataforms)
     return [...array, ...dataDb]
 
 }
@@ -68,6 +69,23 @@ const post_Video_Games = async (req, res) => {
     }
 }
 
+
+const getAllPlatforms = async (req, res)=> {
+    const apiURL3 = await axios.get(`https://api.rawg.io/api/platforms?key=${API_KEY}`)
+    const apiPlatf = await apiURL3.data.results.map(el => el.name)
+    apiPlatf.forEach( el => {
+        Platform.findOrCreate({
+            where : {
+                name: el
+            }
+        })
+    });
+    const allPlatf = await Platform.findAll();
+    console.log(allPlatf)
+    res.status(200).send(allPlatf)
+}
+
+
 const get_id_videoGame = async (req, res) => {
     try {
         const { id } = req.params
@@ -105,4 +123,4 @@ const get_id_videoGame = async (req, res) => {
 
 
 
-module.exports = { get_All_VideoGames, get_VideoGames, post_Video_Games, get_id_videoGame };
+module.exports = { get_All_VideoGames, get_VideoGames, post_Video_Games, get_id_videoGame, getAllPlatforms };

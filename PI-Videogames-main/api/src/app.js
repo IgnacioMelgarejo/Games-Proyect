@@ -10,10 +10,10 @@ const server = express();
 
 server.name = 'API';
 
-server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
+server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));//permite leer inputs de formularios, datos sencillos, ej textos 
 server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
-server.use(morgan('dev'));
+server.use(morgan('dev'));//Me permite ver los mensajes que trae del servidor 'dev'
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
