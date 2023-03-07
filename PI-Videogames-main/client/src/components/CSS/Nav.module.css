@@ -5,11 +5,11 @@
     margin: 0;
     padding: 0;
 }
- .search{
+  .search{
     display: inline-block;
     vertical-align: middle
  }
- 
+  
 .container {
     position: fixed;
     top: 0;
