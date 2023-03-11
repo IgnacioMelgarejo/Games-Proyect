@@ -24,7 +24,7 @@ const CreateGame = () => {
     useEffect(() => {
         dispatch(getGender());
         dispatch(getAllPlatforms());
-    }, []);
+    },[dispatch]);
 
     function validate(input) {
         let error = {};
@@ -164,20 +164,20 @@ const CreateGame = () => {
     return (
         <div >
 
-            <div className="div">
+            <div className={s.div}>
                 <Link to="/home">
                     <div><button >BACK HOME</button></div>
 
                 </Link>
 
-                <div className="div">
+                <div className={s.div}>
 
-                    <form className="form-register" onSubmit={(e) => handleSubmit(e)}>
+                    <form className={s.formRegister} onSubmit={(e) => handleSubmit(e)}>
                         <h4 >Crea tu Videojuego</h4>
                         <div>
 
                             <input
-                                className="input"
+                                className={s.input}
                                 type="text"
                                 value={input.name}
                                 name="name"
@@ -188,9 +188,9 @@ const CreateGame = () => {
                         </div >
 
 
-                        <div className="div">
+                        <div className={s.div}>
                             <input
-                                className="input"
+                                className={s.input}
                                 type="date"
                                 value={input.released}
                                 name="released"
@@ -201,9 +201,9 @@ const CreateGame = () => {
                         </div>
 
 
-                        <div className="div">
+                        <div className={s.div}>
                             <input
-                                className="input"
+                                className={s.input}
                                 type="text"
                                 value={input.img}
                                 name="img"
@@ -214,9 +214,9 @@ const CreateGame = () => {
                         </div>
 
 
-                        <div className="div">
+                        <div className={s.div}>
                             <input
-                                className="input"
+                                className={s.input}
                                 type="number"
                                 value={input.rating}
                                 name="rating"
@@ -227,9 +227,9 @@ const CreateGame = () => {
                         </div>
 
 
-                        <div className="div">
+                        <div className={s.div}>
                             <label>Genres</label><br />
-                            <select className="drop-botton" onChange={(e) => handleSelectGenres(e)}>
+                            <select className={s.dropBotton} onChange={(e) => handleSelectGenres(e)}>
                                 <option value="all">All</option>
                                 {genres?.map((e) => {
                                     return (
@@ -243,7 +243,7 @@ const CreateGame = () => {
                         </div>
 
 
-                        <div className="div">
+                        <div className={s.div}>
                             {input.genres?.map((e) => {
                                 return (
                                     <>
@@ -255,9 +255,9 @@ const CreateGame = () => {
                         </div>
 
 
-                        <div className="div">
+                        <div className={s.div}>
                             <p>Platforms</p>
-                            <select className="drop-botton" onChange={(e) => handleSelectPlatform(e)}>
+                            <select className={s.dropBotton} onChange={(e) => handleSelectPlatform(e)}>
                                 <option value="all">All</option>
                                 {platforms?.map((e) => {
                                     return (
@@ -273,7 +273,7 @@ const CreateGame = () => {
                         </div>
 
 
-                        <div className="div">
+                        <div className={s.div}>
                             {input.platforms?.map((e) => {
                                 return (
                                     <>
@@ -285,8 +285,8 @@ const CreateGame = () => {
                         </div>
 
 
-                        <div className="div">
-                            <textarea className="drop-botton"
+                        <div className={s.div}>
+                            <textarea className={s.dropBotton}
                                 type="text"
                                 value={input.description}
                                 name="description"
@@ -300,11 +300,11 @@ const CreateGame = () => {
 
                         {Object.keys(error).length ? (
                             <div >
-                                <input className="input" type="submit" disabled name="Send" />
+                                <input className={s.input} type="submit" disabled name="Send" />
                             </div>
                         ) : (
                             <div>
-                                <input className="input" type="submit" name="Send" />
+                                <input className={s.input} type="submit" name="Send" />
                             </div>
                         )}
                     </form>

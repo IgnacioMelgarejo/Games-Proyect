@@ -6,7 +6,7 @@
     color: beige;
 }
 
-.form-register{
+.formRegister{
     width: 400px;
     padding: 30px;
     background:#24303c;
@@ -17,7 +17,7 @@
 
 }
 
-.form-register h4 {
+.formRegister h4 {
     font-size: 22px;
     margin-bottom: 20px;
 }
@@ -33,7 +33,7 @@
     font-size: 18px;
 }
 
-.drop-botton{
+.dropBotton{
     width: 100%;
     border: 1px solid #1f53c5;
     background-color:#24303c ;

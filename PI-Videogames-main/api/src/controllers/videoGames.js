@@ -110,7 +110,7 @@ const get_id_videoGame = async (req, res) => {
                 released: apiInfoID.data.released,
                 rating: apiInfoID.data.rating,
                 gender: apiInfoID.data.genres.map(e => e.name).join(', '),
-                description: apiInfoID.data.description,
+                description: apiInfoID.data.description_raw,
                 platforms: apiInfoID.data.platforms.map(e => e.platform.name).join(', '),
                 image: apiInfoID.data.background_image
             }

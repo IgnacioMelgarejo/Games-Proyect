@@ -1,7 +1,11 @@
 .this {
-    display: grid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-template-columns: 33% 33% 33%;
-    text-decoration: none;
+    text-decoration: none; 
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .marginTop{

@@ -18,21 +18,26 @@ const Search = () => {
     dispatch(getNameGame(name));
     setName("");
   };
+
+
   return (
     <div className={s.searchBox}>
+
       <input
-        class={s.searchInput}
+        className={s.searchInput}
         type="text"
         placeholder="Search.."
         onChange={(e) => handleInputChange(e)}
       />
+      
       <button
         className={s.searchButton}
         type="submit"
         onClick={(e) => handleSubmit(e)}
       >
-        <AiOutlineSearch class={s.materialIcons}></AiOutlineSearch>
+        <AiOutlineSearch className={s.materialIcons}></AiOutlineSearch>
       </button>
+
     </div>
   );
 };

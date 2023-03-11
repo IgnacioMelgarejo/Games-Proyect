@@ -1,3 +1,14 @@
+
+/*
+sombras para fondo claro
+.fondoclaro{
+-webkit-box-shadow: -9px 11px 19px 1px rgba(0, 0, 0, 0.58);
+    -moz-box-shadow: -9px 11px 19px 1px rgba(0, 0, 0, 0.58);
+    box-shadow: -9px 11px 19px 1px rgba(0, 0, 0, 0.58);
+    transition: .3s all;
+}
+*/
+
 .mainContainerCard {
     text-decoration: none;
     background-color: rgba(71, 50, 50, 0.2);
@@ -12,11 +23,13 @@
     margin: 60px auto;
     /*a 60px del margen*/
     border-radius: 10px;
-    -webkit-box-shadow: -9px 11px 19px 1px rgba(0, 0, 0, 0.58);
     /*los tres hacen una sombra que sobresale un poco del fondo */
-    -moz-box-shadow: -9px 11px 19px 1px rgba(0, 0, 0, 0.58);
-    box-shadow: -9px 11px 19px 1px rgba(0, 0, 0, 0.58);
+    box-shadow: 2px 2px 4px #ccc;
+    -webkit-box-shadow: -9px 11px 19px 1px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: -9px 11px 19px 1px rgba(0, 0, 0, 0.3);
+    /* box-shadow: -9px 11px 19px 1px rgba(0, 0, 0, 0.3); */
     transition: .3s all;
+    
 }
 
 .mainContainerCard:hover {
@@ -54,3 +67,7 @@
     text-align: center;
     box-shadow: 0 4px #999;
 }
+
+.yellow {
+    color:#efb810;
+  }

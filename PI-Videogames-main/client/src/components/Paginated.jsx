@@ -1,5 +1,5 @@
 import React from "react";
-
+import s from "./CSS/Paginated.module.css"
 
 
 export default function Paginado({ gamesPerPage, games, paginated }) {
@@ -11,8 +11,8 @@ export default function Paginado({ gamesPerPage, games, paginated }) {
     //si tengo el arreglo pageNumber lo mapeo y duvuevlo cada uno de los numeros que devuelva el paginado ↓↓
 
     return (
-        <nav>
-            <div >
+        <nav >
+            <div className={s.paginationContainer}>
                 {pageNumber?.map((number) => {
                     return (
                         <button key={number} onClick={() => paginated(number)}>{number}</button>

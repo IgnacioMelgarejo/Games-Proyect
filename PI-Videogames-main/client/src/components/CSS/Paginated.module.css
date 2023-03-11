@@ -1,0 +1,24 @@
+.paginationContainer {
+    padding-top: 10px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: 100vh;
+    height: 30px;
+  }
+
+  .paginationContainer button {
+    font-family: inherit;
+    width: 30px;
+    color: aliceblue;
+    background-color: #3e4144;
+    border: none;
+    transition: .3s all;
+    border-radius: 5px 5px 8px 8px;
+  
+  }
+
+  .pagination-container button:hover {
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, .6);
+    height: 110%;
+  }

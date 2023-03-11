@@ -14,6 +14,7 @@ const Nav = ({ handleSort, handleGender }) => {
 
   return (
     <div className={s.container}>
+
       <div className={s.logo}>
         <IoLogoGameControllerB />
         <div className={s.toggle}>|||</div>
@@ -24,6 +25,7 @@ const Nav = ({ handleSort, handleGender }) => {
       </div>
 
       <nav className={s.nav}>
+        
         <ul className={s.r}>
           <li className={s.rSel}>
             <select className={s.myselect} onClick={(e) => handleSort(e)}>
@@ -47,8 +49,11 @@ const Nav = ({ handleSort, handleGender }) => {
           <Link to="/create">
             <li className={s.h}>CREATE GAME</li>
           </Link>
+
         </ul>
+
       </nav>
+
     </div>
   );
 };
