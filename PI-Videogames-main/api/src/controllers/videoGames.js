@@ -52,10 +52,10 @@ const get_VideoGames = async (req, res) => {
 
 const post_Video_Games = async (req, res) => {
     try {
-        const { name, description, released, rating, image, plataforms, gender } = req.body
-        if (!name || !description || !plataforms) return res.status(400).send({ message: "information required" });
-
-        const newVideoGame = await Videogame.create({ name, description, released, rating, image, plataforms, gender })
+        console.log(req.body)
+        const { name, description, released, rating, image, platforms, gender } = req.body
+        if (!name || !description || !platforms) return res.status(400).send({ message: "information required" });
+        const newVideoGame = await Videogame.create({ name, description, released, rating, image, platforms, gender })
 
         let genderDb = await Gender.findAll({
             where: {
@@ -63,7 +63,7 @@ const post_Video_Games = async (req, res) => {
             }
         });
         await newVideoGame.addGender(genderDb)
-        res.status(200).send(newVideoGame)
+       res.status(200).send(newVideoGame)
     } catch (error) {
         res.status(404).send({ error: error.message })
     }

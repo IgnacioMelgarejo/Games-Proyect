@@ -5,6 +5,7 @@ import LandingPage from "./components/LandingPage"
 import CreateGame from './components/CreateGame';
 import NotFound from './components/NotFound';
 import Details from './components/Details';
+import Favorites from './components/Favorites';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" component={LandingPage} />
           <Route path="/home" component={Home} />
           <Route path="/create" component={CreateGame}/>
+          <Route path="/favorites" component={Favorites}/>
           <Route path="/game/:id" component={Details}/>
           <Route component={NotFound}/>
         </Switch>

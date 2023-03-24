@@ -6,43 +6,47 @@
     padding: 0;
 }
 
- /* .search{
-    display: inline-block;
-    vertical-align: middle
- } */
- 
+
 .container {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: #ffffff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    background-color: #00000070;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.899);
     padding: 1px 5%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     z-index: 1000;
-
 }
 
- .logo {
-    font-weight: bolder;
-    font-size: 35px;
-    color: black;
-
-}
-
-.r {
+.prueba {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+    height: 2080px;
+    background-color: #000000;
+    color: #fff;
+    transition: all 0.4s ease;
+    transition: all 0.4s ease-out;
+    
 }
 
-.r>li {
-    position: relative;
-    height: 30px;
+
+.logo {
+    font-weight: bolder;
+    font-size: 65px;
+    color: white;
+
 }
+
+.toggle {
+    display: none;
+}
+
 
 .nav ul {
     list-style: none;
@@ -53,29 +57,46 @@
     float: left;
     font-size: 15px;
     padding: 15px;
-    color: #333;
+    color: rgb(192, 192, 192);
+    /* background: #000000b7; */
     display: block;
 }
 
 .nav ul li :hover {
-    background: #333;
-    color: #ffffff;
+    background: inherit;
+    color: #fff;
     padding: 15px;
 }
 
 
-.h:hover{
-    background: #333;
-    color: #fff; 
-    padding: 15px;
+.nav ul li select option {
+    background-color: #000000;
+    /* fallback for old browsers */
+    /* background-color: -webkit-linear-gradient(to right, #434343, #000000);  Chrome 10-25, Safari 5.1-6 */
+    /* background-color: linear-gradient(to right, #434343, #000000); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    ;
+    border: none;
+}
+
+.nav ul li select option {
+    color: #fff;
 }
 
 
-.rSel {
+.ulStyle {
+    display: flex;
+    justify-content: center;
+}
+
+.ulStyle>li {
+    position: relative;
+    height: 30px;
+}
+
+.liSel {
     margin-top: -14px;
     position: relative;
 }
-
 
 .myselect {
     border: none;
@@ -87,71 +108,87 @@
     padding: inherit;
 }
 
+
 .myselect:hover {
-    background: inherit;
+
     color: inherit;
     cursor: pointer;
 }
 
 
-.toggle{
-    display: none;
+/**/
+.create:hover {
+
+    color: #fff;
+   
 }
 
-.container label{
-    font-size: 20px;
-    color: #333;
-    cursor: pointer;
-    display: none;
-}
- 
 
 
 
-@media(max-width:991px){/* 991 es el maximo*/
-    
-    .container{
+@media(max-width:991px) {
+    /* 991 es el maximo*/
+
+    .container {
         padding: 20px;
+        background: #000000;
+
     }
 
-    .container label{
+    .container label {
         display: initial;
     }
 
- 
-     .nav{
-        position:absolute;
-        top:100%; left: 0; right: 0;
-        background: #fff;
-        border-top: 1px solid rgba(0,0,0,.1 );
-    }
-    
-    .r{
-        display: none;
+
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        border-top: 1px solid rgba(0, 0, 0, .1);
     }
 
-    
-    .nav ul li ul{
-        position: relative;
-        width: 100%;
+   
+
+
+    .ulStyle {
+        display: none;
     }
-    .toggle{
+   
+    .prueba{
+        transition: all 0.4s ease;
+        transition: all 0.4s ease-out;
+    }
+
+    .prueba .ulStyle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:space-around;
+        flex-wrap: wrap;
+        height: 25%;
+        margin-top: 0px;
+        /* font-size: 200px; no funciona */
+    }
+    .prueba .ulStyle .liSel {
+        margin-top:-55px;
+        margin-bottom: 0px;
+    }
+   
+
+
+    .toggle {
         display: block;
-        color:#021222;
+        color: white;
         margin-right: 20px;
         font-size: 30px;
         transform: rotate(90deg);
         transition: .3s;
     }
+
     .logo {
         display: flex;
         justify-content: space-between;
         width: 100vw;
-    }    
+    }
 }
-
-
-
-
-
-

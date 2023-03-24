@@ -50,6 +50,7 @@ export const orderByGender = (payload) => {
 
 
 export const postGame = (post) => {
+    console.log(post)
     return async function (dispatch) {
         const json = await axios.post(`http://localhost:3001/videogames`, post);
         return  dispatch ({
@@ -70,6 +71,14 @@ export function getAllPlatforms() {
     }
 }
 
+export const getFavorites = (payload) => {
+    // console.log("el de favorites en acion",payload)
+    return {
+        type: "GET_FAVORITES",
+        payload
+    }
+}
+
 
 export const getDetails = (id) => {
     return async function (dispatch) {
@@ -85,3 +94,5 @@ export const getDetails = (id) => {
     }
 }
   
+
+

@@ -3,11 +3,30 @@
     justify-content: center;
     align-items: center;
     grid-template-columns: 33% 33% 33%;
-    text-decoration: none; 
+    text-decoration: none;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.marginTop{
-    margin-top: 60px;
+.marginTop {
+    margin-top: 140px;
+}
+
+.favButton {
+    position: relative;
+    left: 170px;
+    top: 90px;
+    padding: 2px;
+    border-radius: 20px;
+    background-color: black;
+    color: aliceblue;
+    z-index: 1;
+    border:none;
+}
+
+.favButton:hover {
+    cursor: pointer;
+}
+.favButtonActive{
+    background-color: aqua;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { postGame, getGender, getAllPlatforms, } from "../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
+import b from "./CSS/Button.module.css"
 import s from "./CSS/CreateName.module.css"
 
 const CreateGame = () => {
@@ -24,7 +25,7 @@ const CreateGame = () => {
     useEffect(() => {
         dispatch(getGender());
         dispatch(getAllPlatforms());
-    },[dispatch]);
+    }, [dispatch]);
 
     function validate(input) {
         let error = {};
@@ -79,7 +80,7 @@ const CreateGame = () => {
             })
         );
 
-        console.log(input);
+        
     }
 
     const handleSelectGenres = (e) => {
@@ -143,6 +144,7 @@ const CreateGame = () => {
             platforms: input.platforms.join(", "),
             genres: input.genres.join(", "),
         };
+        console.log(crear)
 
         dispatch(postGame(crear));
 
@@ -162,156 +164,159 @@ const CreateGame = () => {
 
 
     return (
-        <div >
 
-            <div className={s.div}>
-                <Link to="/home">
-                    <div><button >BACK HOME</button></div>
 
-                </Link>
+
+
+
+
+        <div className={s.div}>
+            <Link to="/home">
+                <div className={b.buttonBack}><button >BACK HOME</button></div>
+
+            </Link>
+
+            <form className={s.formRegister} onSubmit={(e) => handleSubmit(e)}>
+                <h4 >Crea tu Videojuego</h4>
+                <div>
+
+                    <input
+                        className={s.input}
+                        type="text"
+                        value={input.name}
+                        name="name"
+                        onChange={handleOnChange}
+                        placeholder="Ingrese nombre"
+                    />
+                    {error.name && <span >{error.name}</span>}
+                </div >
+
 
                 <div className={s.div}>
-
-                    <form className={s.formRegister} onSubmit={(e) => handleSubmit(e)}>
-                        <h4 >Crea tu Videojuego</h4>
-                        <div>
-
-                            <input
-                                className={s.input}
-                                type="text"
-                                value={input.name}
-                                name="name"
-                                onChange={handleOnChange}
-                                placeholder="Ingrese nombre"
-                            />
-                            {error.name && <span >{error.name}</span>}
-                        </div >
-
-
-                        <div className={s.div}>
-                            <input
-                                className={s.input}
-                                type="date"
-                                value={input.released}
-                                name="released"
-                                onChange={handleOnChange}
-                                placeholder="Released"
-                            />
-                            {error.released && <span>{error.released}</span>}
-                        </div>
-
-
-                        <div className={s.div}>
-                            <input
-                                className={s.input}
-                                type="text"
-                                value={input.img}
-                                name="img"
-                                onChange={handleOnChange}
-                                placeholder="Imagen URL"
-                            />
-                            {error.img && <span >{error.img}</span>}
-                        </div>
-
-
-                        <div className={s.div}>
-                            <input
-                                className={s.input}
-                                type="number"
-                                value={input.rating}
-                                name="rating"
-                                onChange={handleOnChange}
-                                placeholder="Raiting"
-                            />
-                            {error.rating && <span >{error.rating}</span>}
-                        </div>
-
-
-                        <div className={s.div}>
-                            <label>Genres</label><br />
-                            <select className={s.dropBotton} onChange={(e) => handleSelectGenres(e)}>
-                                <option value="all">All</option>
-                                {genres?.map((e) => {
-                                    return (
-                                        <option key={e.id} value={e.name}>
-                                            {e.name}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            {error.genres && <span >{error.genres}</span>}
-                        </div>
-
-
-                        <div className={s.div}>
-                            {input.genres?.map((e) => {
-                                return (
-                                    <>
-                                        <div>{e}</div>
-                                        <button onClick={() => handleDeleteGenres(e)}>X</button>
-                                    </>
-                                );
-                            })}{" "}
-                        </div>
-
-
-                        <div className={s.div}>
-                            <p>Platforms</p>
-                            <select className={s.dropBotton} onChange={(e) => handleSelectPlatform(e)}>
-                                <option value="all">All</option>
-                                {platforms?.map((e) => {
-                                    return (
-                                        <option key={e.id} value={e.name}>
-                                            {e.name}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            {error.platforms && (
-                                <span >{error.platforms}</span>
-                            )}
-                        </div>
-
-
-                        <div className={s.div}>
-                            {input.platforms?.map((e) => {
-                                return (
-                                    <>
-                                        <div>{e}</div>
-                                        <button onClick={() => handleDeletePlatforms(e)}>X</button>
-                                    </>
-                                );
-                            })}
-                        </div>
-
-
-                        <div className={s.div}>
-                            <textarea className={s.dropBotton}
-                                type="text"
-                                value={input.description}
-                                name="description"
-                                onChange={handleOnChange}
-                                placeholder="Description"
-                            />
-                            {error.description && (
-                                <span >{error.description}</span>
-                            )}
-                        </div>
-
-                        {Object.keys(error).length ? (
-                            <div >
-                                <input className={s.input} type="submit" disabled name="Send" />
-                            </div>
-                        ) : (
-                            <div>
-                                <input className={s.input} type="submit" name="Send" />
-                            </div>
-                        )}
-                    </form>
+                    <input
+                        className={s.input}
+                        type="date"
+                        value={input.released}
+                        name="released"
+                        onChange={handleOnChange}
+                        placeholder="Released"
+                    />
+                    {error.released && <span>{error.released}</span>}
                 </div>
-            </div>
 
+
+                <div className={s.div}>
+                    <input
+                        className={s.input}
+                        type="text"
+                        value={input.img}
+                        name="img"
+                        onChange={handleOnChange}
+                        placeholder="Imagen URL"
+                    />
+                    {error.img && <span >{error.img}</span>}
+                </div>
+
+
+                <div className={s.div}>
+                    <input
+                        className={s.input}
+                        type="number"
+                        value={input.rating}
+                        name="rating"
+                        onChange={handleOnChange}
+                        placeholder="Raiting"
+                    />
+                    {error.rating && <span >{error.rating}</span>}
+                </div>
+
+
+                <div className={s.div}>
+                    <label>Genres</label><br />
+                    <select className={s.dropBotton} onChange={(e) => handleSelectGenres(e)}>
+                        <option value="all">All</option>
+                        {genres?.map((e) => {
+                            return (
+                                <option key={e.id} value={e.name}>
+                                    {e.name}
+                                </option>
+                            );
+                        })}
+                    </select>
+                    {error.genres && <span >{error.genres}</span>}
+                </div>
+
+
+                <div className={s.div}>
+                    {input.genres?.map((e) => {
+                        return (
+                            <div key={e.id}className={s.dropConteiner}>
+                                <div >{e}</div>
+                                <button onClick={() => handleDeleteGenres(e)}>X</button>
+                            </div>
+                        );
+                    })}{" "}
+                </div>
+
+
+                <div className={s.div}>
+                    <p>Platforms</p>
+                    <select className={s.dropBotton} onChange={(e) => handleSelectPlatform(e)}>
+                        <option value="all">All</option>
+                        {platforms?.map((e) => {
+                            return (
+                                <option key={e.id} value={e.name}>
+                                    {e.name}
+                                </option>
+                            );
+                        })}
+                    </select>
+                    {error.platforms && (
+                        <span >{error.platforms}</span>
+                    )}
+                </div>
+
+
+                <div className={s.div}>
+                    {input.platforms?.map((e) => {
+                        return (
+                            <>
+                                <div>{e}</div>
+                                <button onClick={() => handleDeletePlatforms(e)}>X</button>
+                            </>
+                        );
+                    })}
+                </div>
+
+
+                <div className={s.div}>
+                    <textarea
+                        className={s.dropBotton}
+                        type="text"
+                        value={input.description}
+                        name="description"
+                        onChange={handleOnChange}
+                        placeholder="Description"
+                    />
+                    {error.description && (
+                        <span >{error.description}</span>
+                    )}
+                </div>
+
+                {Object.keys(error).length ? (
+                    <div >
+                        <input className={s.input} type="submit" disabled name="Send" />
+                    </div>
+                ) : (
+                    <div>
+                        <input className={s.input} type="submit" name="Send" />
+                    </div>
+                )}
+            </form>
         </div>
+
+
+
     );
 }
 

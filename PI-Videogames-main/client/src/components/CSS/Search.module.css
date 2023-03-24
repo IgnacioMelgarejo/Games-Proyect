@@ -1,15 +1,15 @@
 
 
  .searchBox {
-    /* margin-top: 0px; */
-    /* position: absos */
-    /* transform:  translate(-50%,50%); */
-    background: #2f3640;
+    margin-top: 5px;
+    background: #222222;/*color del borde*/
     border-radius: 40px;
     padding: 10px;
-    
-
 }
+nav .searchBox{
+    display: none;
+}
+
 
 .searchBox:hover > .searchInput {
     width: 240px;
@@ -19,18 +19,18 @@
 
 
 .searchBox:hover > .searchButton {
-  background: white;
+  background: rgb(225, 221, 221);
   color : #2f3640;
   cursor:pointer;
 }
 
 .searchButton {
-    color: white;
+    color: white; /*Es la lupa*/
     float: right;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #2f3640;
+    background: #0b0c0c;/* color del circulo de adentro*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,9 +42,8 @@
     border:none;
     background: none;
     outline:none;
-    /* float:left; */
     padding: 0;
-    color: white;
+    color: rgb(231, 231, 231); /*Las letras del input*/
     font-size: 16px;
     transition: 0.4s;
     line-height: 40px;
@@ -63,7 +62,36 @@
 @media(max-width:991px){
     .search{
         display: none
-    }          
+    }   
+    .searchBox{
+        display: none
+    }       
+    .searchButton{
+        display: none
+    }     
+    .searchInput{
+        display: none
+    }
+
+    nav .searchNone .searchBox{ 
+        display: none;
+         
+    }
+    nav .searchBurger .searchBox{ 
+        display: flex;
+        
+    }
+    nav .searchBurger .searchButton{
+        display: flex
+     }
+    nav .searchBurger .searchButton{ 
+        display: flex;
+    }
+    nav .searchBurger .searchInput{ 
+        display: flex;
+    }
   } 
+
+  
  
 

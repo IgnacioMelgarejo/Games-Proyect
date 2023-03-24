@@ -3,7 +3,8 @@ const initialState = {
     allGames: [],
     platforms: [],
     gender: [],
-    details:[]
+    details: [],
+    favorites: []
 
 }
 
@@ -78,6 +79,22 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 details: action.payload
+            }
+        case "GET_FAVORITES":
+            let id = action.payload
+            //    console.log("payload",action.payload)
+            let favoriteSelected = state.allGames.find(e => e.id.toString() === id)
+            // console.log("favoriteSelected",favoriteSelected)
+            let favoriteIndex = state.favorites.indexOf(favoriteSelected)
+            // console.log("favoriteIndex",favoriteIndex)
+            
+
+            !state.favorites.includes(favoriteSelected)?state.favorites.push(favoriteSelected): favoriteIndex !== -1? state.favorites.splice(favoriteIndex, 1):console.log("funciona bien")
+            console.log("REDUCER",state.favorites)
+            return {
+                ...state,
+                ...state.favorites
+
             }
         default: return state
     }

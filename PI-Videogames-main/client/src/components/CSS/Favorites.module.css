@@ -1,0 +1,22 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    text-decoration: none;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.favoritesTitle{
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    /* justify-content: space-around; */
+    font-size: 60px;
+    color:aliceblue;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+
+}

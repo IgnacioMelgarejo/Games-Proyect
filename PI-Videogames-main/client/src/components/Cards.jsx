@@ -12,7 +12,7 @@ import { SiPlaystationvita } from "react-icons/si";
 import s from "./CSS/Cards.module.css";
 
 const Cards = ({ image, name, platforms, rating, gender }) => {
-  // const icons = [];
+  
   const platformIcons = {
     Xbox: <IoLogoXbox />,
     Linux: <DiLinux />,
@@ -39,34 +39,48 @@ const Cards = ({ image, name, platforms, rating, gender }) => {
   });
 
   return (
+
     <div className={s.mainContainerCard}>
-      <div className={s.imageDogCard}>
-        <img src={image} alt="img not found" width="240px" height="180px" />
+
+      <div className={s.gameCard}>
+        <img src={image} alt="img not found" width="325px" height="180px" />
       </div>
-      <div className={s.linkToDetails}>
+
+      <div className={s.detailsContent}>
+
         <h3>{name}</h3>
 
-        <p>{renderedIcons}</p>
+        <div className={s.cardContent}>
 
-        <div className={s.starsContainer}>
-          <i
-            className={`far fa-star ${rating >= 1 ? "fas fa-star yellow" : ""}`}
-          ></i>
-          <i
-            className={`far fa-star ${rating >= 2 ? "fas fa-star yellow" : ""}`}
-          ></i>
-          <i
-            className={`far fa-star ${rating >= 3 ? "fas fa-star yellow" : ""}`}
-          ></i>
-          <i
-            className={`far fa-star ${rating >= 4 ? "fas fa-star yellow" : ""}`}
-          ></i>
-          <i
-            className={`far fa-star ${rating >= 5 ? "fas fa-star yellow" : ""}`}
-          ></i>
+          <p className={s.platIcons}> {renderedIcons}</p>
+
+
+          <div className={s.starsContainer}>
+            rating {" "}
+            <i
+              className={`far fa-star ${rating >= 1 ? "fas fa-star yellow" : ""}`}
+            ></i>
+            <i
+              className={`far fa-star ${rating >= 2 ? "fas fa-star yellow" : ""}`}
+            ></i>
+            <i
+              className={`far fa-star ${rating >= 3 ? "fas fa-star yellow" : ""}`}
+            ></i>
+            <i
+              className={`far fa-star ${rating >= 4 ? "fas fa-star yellow" : ""}`}
+            ></i>
+            <i
+              className={`far fa-star ${rating >= 5 ? "fas fa-star yellow" : ""}`}
+            ></i>
+          </div>
+
+
+          <p>Genders: {" "}{"    "} {gender}</p>
+
         </div>
-        <p>{gender}</p>
+
       </div>
+
     </div>
   );
 };
