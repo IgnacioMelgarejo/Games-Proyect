@@ -11,39 +11,44 @@ import { SiPlaystationvita } from "react-icons/si";
 
 import s from "./CSS/Cards.module.css";
 
-const Cards = ({ image, name, platforms, rating, gender }) => {
-  
+const Cards = ({ image, name, platforms, rating, gender, genders }) => {
+
+
   const platformIcons = {
-    Xbox: <IoLogoXbox />,
-    Linux: <DiLinux />,
-    PlayStation: <IoLogoPlaystation />,
+    "Xbox": <IoLogoXbox />,
+    "Linux": <DiLinux />,
+    "PlayStation": <IoLogoPlaystation />,
     "PS Vita": <SiPlaystationvita />,
     "Nintendo Switch": <SiNintendoswitch />,
-    PC: <RiComputerLine />,
-    Android: <AiFillAndroid />,
-    macOS: <AiFillMacCommand />,
-    iOS: <AiFillApple />,
+    "PC": <RiComputerLine />,
+    "Android": <AiFillAndroid />,
+   "macOS": <AiFillMacCommand />,
+    "iOS": <AiFillApple />,
   };
 
   const uniquePlatforms = {};
+
   const renderedIcons = platforms.split(", ").map((platform) => {
+
     const platformName = Object.keys(platformIcons).find((name) =>
       platform.includes(name)
     );
     if (platformName && !uniquePlatforms[platformName]) {
       uniquePlatforms[platformName] = true;
-      return platformIcons[platformName];
+      return <span key={platformName}>{platformIcons[platformName]}</span>;//lo meti dentro de un span para para ponerle la key id y que funcione sin lanzar error
     } else {
       return null;
     }
   });
+
 
   return (
 
     <div className={s.mainContainerCard}>
 
       <div className={s.gameCard}>
-        <img src={image} alt="img not found" width="325px" height="180px" />
+        
+        <img src={image} alt="img not found" />
       </div>
 
       <div className={s.detailsContent}>
@@ -73,9 +78,9 @@ const Cards = ({ image, name, platforms, rating, gender }) => {
               className={`far fa-star ${rating >= 5 ? "fas fa-star yellow" : ""}`}
             ></i>
           </div>
+         
 
-
-          <p>Genders: {" "}{"    "} {gender}</p>
+          <p>Genders: {" "} {genders ? genders.map(e => e.name).join(", ") : gender}</p>
 
         </div>
 

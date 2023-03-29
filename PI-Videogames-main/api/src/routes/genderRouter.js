@@ -1,9 +1,9 @@
 const {Router} = require("express")
-const {all_genres} = require("../controllers/genders.js")
+const { all_genders} = require("../controllers/genders.js")
 
 const genderRouter = Router()
 
-genderRouter.get("/", all_genres )
+genderRouter.get("/", all_genders )
 
 
 module.exports = genderRouter;

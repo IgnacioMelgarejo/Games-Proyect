@@ -7,10 +7,11 @@ import s from "./CSS/Details.module.css";
 import sB from "./CSS/Button.module.css"
 
 const Details = (props) => {
-  console.log(props.match.params.id);
+
   const dispatch = useDispatch();
   const game = useSelector((state) => state.details);
-  console.log(game);
+
+  const gameRating = game[0] ? game[0].rating : game.rating
 
   useEffect(() => {
     dispatch(getDetails(props.match.params.id));
@@ -30,7 +31,7 @@ const Details = (props) => {
       <div className={s.mainContainerDetail}>
         <h1>{game.name}</h1>
 
-        <img className={s.img} src={game.image} alt="img not found" />
+        <img className={s.img} src={game[0] ? game[0].image : game.image} alt="img not found" />
 
         <div className={s.extras}>
 
@@ -38,49 +39,48 @@ const Details = (props) => {
           <div className={s.platformsReleased}>
 
 
-            <p className={s.starsContainer}>
-              <p className="numerSizeFont">{game.rating}{"   "}</p>
+            <div className={s.starsContainer}>
+              <p className="numerSizeFont">{gameRating}</p>{""}
 
               <i
-                className={`far fa-star ${game.rating >= 1 ? "fas fa-star yellow" : ""
+                className={`far fa-star ${gameRating >= 1 ? "fas fa-star yellow" : ""}`}
+              ></i>
+
+              <i
+                className={`far fa-star ${gameRating >= 2 ? "fas fa-star yellow" : ""}`}
+              ></i>
+
+              <i
+                className={`far fa-star ${gameRating >= 3 ? "fas fa-star yellow" : ""
                   }`}
               ></i>
 
               <i
-                className={`far fa-star ${game.rating >= 2 ? "fas fa-star yellow" : ""
+                className={`far fa-star ${gameRating >= 4 ? "fas fa-star yellow" : ""
                   }`}
               ></i>
 
               <i
-                className={`far fa-star ${game.rating >= 3 ? "fas fa-star yellow" : ""
+                className={`far fa-star ${gameRating >= 5 ? "fas fa-star yellow" : ""
                   }`}
               ></i>
 
-              <i
-                className={`far fa-star ${game.rating >= 4 ? "fas fa-star yellow" : ""
-                  }`}
-              ></i>
-
-              <i
-                className={`far fa-star ${game.rating >= 5 ? "fas fa-star yellow" : ""
-                  }`}
-              ></i>
-
-            </p>
-
-            <p>Gender: {game.gender}</p>
-
+            </div>
+            <p>Gender: {game[0] ? game[0].genders.map(e => e.name).join(", ") : game.gender}</p>
+            
+            
           </div>
 
 
           <div className={s.platformsReleased}>
-            <p>Platforms: {game.platforms}</p>
-            <p>Released: {game.released}</p>
+          <p>Released: {game[0] ? game[0].released : game.released}</p>
+          <p>Platforms: {game[0] ? game[0].platforms : game.platforms}</p>
+            
           </div>
 
         </div>
-        
-        <p  className={s.description}> {game.description}</p>
+        <br/>
+        <p className={s.description}> {game[0] ? game[0].description : game.description}</p>
       </div>
     </div>
   );

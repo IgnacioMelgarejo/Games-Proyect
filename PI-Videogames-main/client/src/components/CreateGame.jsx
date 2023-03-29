@@ -8,8 +8,9 @@ import s from "./CSS/CreateName.module.css"
 const CreateGame = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const genres = useSelector((state) => state.gender);
+    const gender = useSelector((state) => state.gender);
     const platforms = useSelector((state) => state.platforms);
+    
     const [error, setError] = useState({});
 
     const [input, setInput] = useState({
@@ -17,9 +18,9 @@ const CreateGame = () => {
         description: "",
         rating: "",
         released: "",
-        img: "",
+        image: "",
         platforms: [],
-        genres: [],
+        gender: [],
     });
 
     useEffect(() => {
@@ -53,12 +54,12 @@ const CreateGame = () => {
         } else if (input.released.length < 10) {
             error.released = "Date of release is to long";
         }
-        if (!input.img) {
-            error.img = "Image URL is required";
+        if (!input.image) {
+            error.image = "Image URL is required";
         }
 
-        if (!input.genres[0]) {
-            error.genres = "Minimun one Genre is required ";
+        if (!input.gender[0]) {
+            error.gender = "Minimun one Genre is required ";
         }
 
         if (!input.platforms[0]) {
@@ -85,15 +86,15 @@ const CreateGame = () => {
 
     const handleSelectGenres = (e) => {
 
-        if (!input.genres.includes(e.target.value)) {
+        if (!input.gender.includes(e.target.value)) {
             setInput({
                 ...input,
-                genres: [...input.genres, e.target.value],
+                gender: [...input.gender, e.target.value],
             });
             setError(
                 validate({
                     ...input,
-                    genres: [...input.genres, e.target.value],
+                    gender: [...input.gender, e.target.value],
                 })
             );
         } else {
@@ -104,6 +105,7 @@ const CreateGame = () => {
     }
 
     const handleSelectPlatform = (e) => {
+        
         setInput({
             ...input,
             platforms: [...input.platforms, e.target.value],
@@ -126,7 +128,7 @@ const CreateGame = () => {
     const handleDeleteGenres = (el) => {
         setInput({
             ...input,
-            genres: input.genres.filter((param) => param !== el),
+            gender: input.gender.filter((param) => param !== el),
         });
     }
 
@@ -140,9 +142,9 @@ const CreateGame = () => {
             description: input.description,
             rating: input.rating,
             released: input.released,
-            img: input.img,
+            image: input.image,
             platforms: input.platforms.join(", "),
-            genres: input.genres.join(", "),
+            gender: input.gender.join(", "),
         };
         console.log(crear)
 
@@ -153,9 +155,9 @@ const CreateGame = () => {
             description: "",
             rating: "",
             released: "",
-            img: "",
+            image: "",
             platforms: [],
-            genres: [],
+            gender: [],
         });
 
         alert("VideoGame Created");
@@ -164,9 +166,6 @@ const CreateGame = () => {
 
 
     return (
-
-
-
 
 
 
@@ -188,7 +187,7 @@ const CreateGame = () => {
                         onChange={handleOnChange}
                         placeholder="Ingrese nombre"
                     />
-                    {error.name && <span >{error.name}</span>}
+                    {error.name && <span  className={s.red}>{error.name}</span>}
                 </div >
 
 
@@ -201,7 +200,7 @@ const CreateGame = () => {
                         onChange={handleOnChange}
                         placeholder="Released"
                     />
-                    {error.released && <span>{error.released}</span>}
+                    {error.released && <span className={s.red}>{error.released}</span>}
                 </div>
 
 
@@ -209,12 +208,12 @@ const CreateGame = () => {
                     <input
                         className={s.input}
                         type="text"
-                        value={input.img}
-                        name="img"
+                        value={input.image}
+                        name="image"
                         onChange={handleOnChange}
                         placeholder="Imagen URL"
                     />
-                    {error.img && <span >{error.img}</span>}
+                    {error.image && <span className={s.red}>{error.image}</span>}
                 </div>
 
 
@@ -227,32 +226,38 @@ const CreateGame = () => {
                         onChange={handleOnChange}
                         placeholder="Raiting"
                     />
-                    {error.rating && <span >{error.rating}</span>}
+                    {error.rating && <span className={s.red}>{error.rating}</span>}
                 </div>
 
 
                 <div className={s.div}>
-                    <label>Genres</label><br />
+                    <label>GENRES</label><br />
                     <select className={s.dropBotton} onChange={(e) => handleSelectGenres(e)}>
                         <option value="all">All</option>
-                        {genres?.map((e) => {
+                        {gender?.map((e) => {
                             return (
+                                
                                 <option key={e.id} value={e.name}>
                                     {e.name}
                                 </option>
                             );
                         })}
                     </select>
-                    {error.genres && <span >{error.genres}</span>}
+                    {error.gender && <span  className={s.red} >{error.gender}</span>}
                 </div>
 
-
+                {/* <div  className={s.dropConteiner}>
+                                
+                            </div> */}
                 <div className={s.div}>
-                    {input.genres?.map((e) => {
+                    {input.gender?.map((e) => {
                         return (
-                            <div key={e.id}className={s.dropConteiner}>
-                                <div >{e}</div>
+                            <div  className={s.dropConteiner}>
+                                <div className={s.dropItem} key={e.id}>
+                                    {e}{" "} 
                                 <button onClick={() => handleDeleteGenres(e)}>X</button>
+                                </div>
+                                
                             </div>
                         );
                     })}{" "}
@@ -260,30 +265,32 @@ const CreateGame = () => {
 
 
                 <div className={s.div}>
-                    <p>Platforms</p>
+                    <p>PLATFORMS</p>
                     <select className={s.dropBotton} onChange={(e) => handleSelectPlatform(e)}>
                         <option value="all">All</option>
-                        {platforms?.map((e) => {
+                        {platforms?.map((platform) => {
                             return (
-                                <option key={e.id} value={e.name}>
-                                    {e.name}
+                                <option key={platform.id} value={platform.name}>
+                                    {platform.name}
                                 </option>
                             );
                         })}
                     </select>
                     {error.platforms && (
-                        <span >{error.platforms}</span>
+                        <span className={s.red} >{error.platforms}</span>
                     )}
                 </div>
 
 
                 <div className={s.div}>
-                    {input.platforms?.map((e) => {
+                    {input.platforms?.map((p) => {
                         return (
-                            <>
-                                <div>{e}</div>
-                                <button onClick={() => handleDeletePlatforms(e)}>X</button>
-                            </>
+                            <div className={s.dropConteiner}>
+                                <div className={s.dropItem} key={p.id}>{p}
+                                
+                                <button onClick={() => handleDeletePlatforms(p)}>X</button>
+                                </div>
+                            </div>
                         );
                     })}
                 </div>
@@ -299,7 +306,7 @@ const CreateGame = () => {
                         placeholder="Description"
                     />
                     {error.description && (
-                        <span >{error.description}</span>
+                        <span className={s.red}>{error.description}</span>
                     )}
                 </div>
 

@@ -3,22 +3,28 @@ const { API_KEY } = process.env;
 const axios = require("axios")
 
 
-const Get_Genres = async () => {
+const Get_genders = async () => {
     var generos = []
-    let genresApi = await axios(`https://api.rawg.io/api/genres?key=${API_KEY}`)
+    
+    let gendersApi = await axios(`https://api.rawg.io/api/genres?key=${API_KEY}`)
+    
 
-    genresApi.data.results.map(e => generos.push(e.name));
+    gendersApi.data.results.map(e => generos.push(e.name));
     
     generos.map(async (d) => {
         await Gender.create({ name: d });
     });
+    
 }
 
-const all_genres = async (req, res) => {
+const all_genders = async (req, res) => {
     try {
-        const genresDb = await Gender.findAll()
-        if (genresDb.length === 0) await Get_Genres()
-        res.status(200).send(genresDb)
+        const gendersDb = await Gender.findAll()
+        
+        if (gendersDb.length === 0)  await Get_genders() 
+
+        res.status(200).send(gendersDb)
+
     } catch (error) {
         res.status(404).send(error)
     }
@@ -26,4 +32,4 @@ const all_genres = async (req, res) => {
 
 
 
-module.exports = { all_genres, Get_Genres };
+module.exports = { all_genders};

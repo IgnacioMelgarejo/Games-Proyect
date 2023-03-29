@@ -65,6 +65,8 @@ const [savedGames, setSavedGames] = useState({});
   setSavedGames({...savedGames, [gameId]: !savedGames[gameId]});
     
   };
+
+ 
   
  
   return (
@@ -89,7 +91,7 @@ const [savedGames, setSavedGames] = useState({});
               </button>
 
               <Link className={s.linkCard} to={`/game/${e.id}`}>
-                <Cards id={e.id} name={e.name} image={e.image} platforms={e.platforms} rating={e.rating} gender={e.gender} />
+               <Cards id={e.id} name={e.name} image={e.image} platforms={e.platforms} rating={e.rating} gender={e.gender} genders={e.genders}/>
               </Link>
             </div>
           );

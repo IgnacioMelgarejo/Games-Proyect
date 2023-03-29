@@ -1,0 +1,76 @@
+/* .backgroundImage {
+  align-items: center;
+  background-image: url('https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2021/04/videojuegos-vendidos-1995-2020-2296181.jpg?tf=3840x') ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height:90vh;
+  min-width: 100vh;
+  
+} */
+ 
+
+main {
+  display: grid;
+  grid-template-columns: auto auto;
+  height: 70vh;
+  align-items: end;
+  justify-content: space-evenly;
+  margin-left: 4rem;
+}
+
+main h1 {
+ 
+  font-size: 4.5rem;
+  text-align: left;
+}
+
+main p {
+  font-size: 1rem;
+  width: 18rem;
+  color: hsl(0, 0%, 41%);
+  line-height: 1.2rem;
+  text-align: left;
+}
+
+main button {
+  display: inline-block;
+  background-color: hsl(0, 0%, 8%);
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.4rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+#text-side {
+  margin-top: 5rem;
+}
+
+.img-side img{
+  height: 25rem;
+}
+
+/* Responsive */
+@media (min-width: 680px) and (max-width: 1024px) {
+main {
+  align-items: self-end;
+}
+
+.img-side img{
+  height: 19rem;
+}
+}
+
+@media (min-width: 300px) and (max-width: 680px) {
+main {
+  grid-template-columns: 100%;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.img-side img{
+  height: 15rem;
+}
+}

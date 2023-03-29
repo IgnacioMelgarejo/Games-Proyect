@@ -62,7 +62,7 @@ export const postGame = (post) => {
 
 export function getAllPlatforms() {
     return async function (dispatch) {
-        const json = await axios.get(`https://videogames-api-bc2k.onrender.com/platforms`)
+        const json = await axios.get(`http://localhost:3001/videogames/platforms`)
         const platformss = json.data
         return dispatch({
             type: 'GET_ALL_PLATFORMS',

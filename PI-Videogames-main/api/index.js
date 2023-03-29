@@ -19,12 +19,14 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const{all_genders} = require('./src/controllers/genders')
+const{get_all_platforms} = require('../api/src/controllers/videoGames')
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
-    
-    // Get_Genres()
+    // get_all_platforms()
+    // all_genders()
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });

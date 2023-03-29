@@ -2,6 +2,7 @@
 const axios = require("axios")
 const { Videogame, Gender, Platform } = require("../db")
 const { API_KEY } = process.env;
+const { Op } = require("sequelize");
 
 
 const get_All_VideoGames = async () => {
@@ -13,6 +14,7 @@ const get_All_VideoGames = async () => {
             },
         },
     })
+    console.log(dataDb)
     var array = []
     for (let i = 1; i <= 5; i++) {
         let apiInfo = await axios(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`)
@@ -29,7 +31,7 @@ const get_All_VideoGames = async () => {
             });
         });
     }
-    console.log("este es", array.plataforms)
+
     return [...array, ...dataDb]
 
 }
@@ -50,40 +52,58 @@ const get_VideoGames = async (req, res) => {
     }
 }
 
+const get_all_platforms = async (req, res) => {
+    const apiURL3 = await axios.get(`https://api.rawg.io/api/platforms?key=${API_KEY}`)
+    const apiPlatf = await apiURL3.data.results.map(el => el.name)
+
+    apiPlatf.forEach(el => {
+        Platform.findOrCreate({
+            where: {
+                name: el
+            }
+        })
+    });
+    const allPlatf = await Platform.findAll();
+
+    res.status(200).send(allPlatf)
+}
+
 const post_Video_Games = async (req, res) => {
     try {
-        console.log(req.body)
         const { name, description, released, rating, image, platforms, gender } = req.body
+        console.log(req.body)
         if (!name || !description || !platforms) return res.status(400).send({ message: "information required" });
-        const newVideoGame = await Videogame.create({ name, description, released, rating, image, platforms, gender })
+        console.log()
+
+        const newVideoGame = await Videogame.create({ name, description, released, rating, image, platforms: platforms.toString() });
+        console.log("genderACA", gender)
+
+        let genderArray = gender.split(", ");
+        console.log("genderArray",genderArray )
 
         let genderDb = await Gender.findAll({
             where: {
-                name: gender
+                name: {
+                    [Op.in]: genderArray
+
+                }
             }
+
+
         });
+
+        console.log("gender db", genderDb)
+
         await newVideoGame.addGender(genderDb)
-       res.status(200).send(newVideoGame)
+
+        res.status(200).send(newVideoGame)
     } catch (error) {
         res.status(404).send({ error: error.message })
     }
 }
 
 
-const getAllPlatforms = async (req, res)=> {
-    const apiURL3 = await axios.get(`https://api.rawg.io/api/platforms?key=${API_KEY}`)
-    const apiPlatf = await apiURL3.data.results.map(el => el.name)
-    apiPlatf.forEach( el => {
-        Platform.findOrCreate({
-            where : {
-                name: el
-            }
-        })
-    });
-    const allPlatf = await Platform.findAll();
-    console.log(allPlatf)
-    res.status(200).send(allPlatf)
-}
+
 
 
 const get_id_videoGame = async (req, res) => {
@@ -123,4 +143,4 @@ const get_id_videoGame = async (req, res) => {
 
 
 
-module.exports = { get_All_VideoGames, get_VideoGames, post_Video_Games, get_id_videoGame, getAllPlatforms };
+module.exports = { get_All_VideoGames, get_VideoGames, post_Video_Games, get_id_videoGame, get_all_platforms };

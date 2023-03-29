@@ -1,11 +1,11 @@
 const { Router } = require("express");
-const { get_VideoGames, post_Video_Games, get_id_videoGame, getAllPlatforms } = require("../controllers/videoGames.js")
+const { get_VideoGames, post_Video_Games, get_id_videoGame, get_all_platforms } = require("../controllers/videoGames.js")
 
 const videoGamesRouter = Router();
 
 videoGamesRouter.get("/", get_VideoGames)
 
-videoGamesRouter.get("/plataforms", getAllPlatforms)
+videoGamesRouter.get("/platforms", get_all_platforms)
 
 videoGamesRouter.post("/", post_Video_Games)
 

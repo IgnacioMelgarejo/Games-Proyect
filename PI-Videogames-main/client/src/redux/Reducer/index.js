@@ -18,6 +18,7 @@ const rootReducer = (state = initialState, action) => {
                 allGames: action.payload
             }
         case "GET_GENDER":
+            
             return {
                 ...state,
                 gender: action.payload

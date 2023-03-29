@@ -14,7 +14,7 @@ estilos para fondo claro
   align-items: center;
   flex-direction: column;
   /* border: 1px solid #ccc; */
-  background-color: rgba(71, 50, 50, 0.2);
+  background-color: rgba(23, 21, 21, 0.2);
   backdrop-filter: blur(2px);
   color: #717d7e;
   border-radius: 10px;
@@ -38,7 +38,8 @@ estilos para fondo claro
 
 h1 {
   margin-top: 5px;
-  font-size: 24px;
+  margin-bottom: 10px;
+  font-size: 34px;
   text-align: center;
 }
 
@@ -46,12 +47,12 @@ h1 {
   width: 100%;
   text-align: left;
   margin-top: 30px;
-  font-size: large;
 }
 
 .description {
   margin-bottom: 0px;
   margin-top: 40px;
+  font-size: 20px;
 }
 
 
@@ -69,9 +70,10 @@ h1 {
 
 .platformsReleased{
   /* font-size: large; */
-  display: inline-block;
+  /* display: inline-block; */
   width: 50%;
   height: 160px;
+  margin-bottom: 0px;
   /* margin-top: 30px; */
   
 }
@@ -87,5 +89,5 @@ h1 {
 .starsContainer {
   display: flex;
   flex-direction: row;
-  font-size: xx-large;
+  font-size: 22px;
 }
