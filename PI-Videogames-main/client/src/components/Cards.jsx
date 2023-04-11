@@ -22,7 +22,7 @@ const Cards = ({ image, name, platforms, rating, gender, genders }) => {
     "Nintendo Switch": <SiNintendoswitch />,
     "PC": <RiComputerLine />,
     "Android": <AiFillAndroid />,
-   "macOS": <AiFillMacCommand />,
+    "macOS": <AiFillMacCommand />,
     "iOS": <AiFillApple />,
   };
 
@@ -47,7 +47,7 @@ const Cards = ({ image, name, platforms, rating, gender, genders }) => {
     <div className={s.mainContainerCard}>
 
       <div className={s.gameCard}>
-        
+
         <img src={image} alt="img not found" />
       </div>
 
@@ -61,30 +61,34 @@ const Cards = ({ image, name, platforms, rating, gender, genders }) => {
 
 
           <div className={s.starsContainer}>
-            rating {" "}
+            {/* Rating {" "} */}
+            {rating}{" "}
             <i
-              className={`far fa-star ${rating >= 1 ? "fas fa-star yellow" : ""}`}
+              className={`far fa-star ${rating >= 1 ? `fas fa-star ${s.fuchsia}`  : ""}`}
             ></i>
             <i
-              className={`far fa-star ${rating >= 2 ? "fas fa-star yellow" : ""}`}
+              className={`far fa-star ${rating >= 2 ? `fas fa-star ${s.fuchsia}` : ""}`}
             ></i>
             <i
-              className={`far fa-star ${rating >= 3 ? "fas fa-star yellow" : ""}`}
+              className={`far fa-star ${rating >= 3 ? `fas fa-star ${s.fuchsia}` : ""}`}
             ></i>
             <i
-              className={`far fa-star ${rating >= 4 ? "fas fa-star yellow" : ""}`}
+              className={`far fa-star ${rating >= 4 ? `fas fa-star ${s.fuchsia}` : ""}`}
             ></i>
             <i
-              className={`far fa-star ${rating >= 5 ? "fas fa-star yellow" : ""}`}
+              className={`far fa-star ${rating >= 5 ? `fas fa-star ${s.fuchsia}` : ""}`}
             ></i>
           </div>
-         
 
-          <p>Genders: {" "} {genders ? genders.map(e => e.name).join(", ") : gender}</p>
+
+          <p> {genders ? genders.map(e => e.name).join(", ") : gender}</p>
 
         </div>
 
       </div>
+
+
+      <button className={s.buttonDetails}>More</button>
 
     </div>
   );

@@ -15,6 +15,7 @@ import Nav from "./Nav";
 import s from "./CSS/Home.module.css";
 
 
+
 const Home = () => {
   const games = useSelector((state) => state.games);
   const favorites = useSelector((state) => state.favorites);
@@ -70,7 +71,7 @@ const [savedGames, setSavedGames] = useState({});
   
  
   return (
-    <div className={s.marginTop}>
+    <div className={s.container}>
       <Nav handleSort={handleSort} handleGender={handleGender}></Nav>
 
       <Paginated
@@ -84,7 +85,7 @@ const [savedGames, setSavedGames] = useState({});
           // console.log("isfavorito",isFavorite)
           // const buttonClassName = isFavorite ? `${s.favButton} ${s.favButtonActive}` : s.favButton;
           return (
-            <div key={e.id}>
+            <div className={s.cardContent} key={e.id}>
               <button className={s.favButton} value={e.id} onClick={(e)=>handleFavorite(e)}>
               {/* {savedGames[e.id] ? "❤️" : "🤍"} */}
               {isFavorite?  "❤️":"🤍" }

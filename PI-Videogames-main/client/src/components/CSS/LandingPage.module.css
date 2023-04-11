@@ -7,19 +7,21 @@
   min-width: 100vh;
   
 } */
- 
+
 
 main {
+  background-image: url('../image/Fondo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: grid;
   grid-template-columns: auto auto;
-  height: 70vh;
-  align-items: end;
-  justify-content: space-evenly;
-  margin-left: 4rem;
+  align-items:center;
+  justify-content:space-evenly;
+  height: 100vh;
 }
 
 main h1 {
- 
+  color: #fff;
   font-size: 4.5rem;
   text-align: left;
 }
@@ -27,14 +29,21 @@ main h1 {
 main p {
   font-size: 1rem;
   width: 18rem;
-  color: hsl(0, 0%, 41%);
+  color: white;
   line-height: 1.2rem;
   text-align: left;
 }
 
+
+/*#F2387C
+#7517F8
+Oriana Galdeano20:11
+#022340*/
+
+
 main button {
   display: inline-block;
-  background-color: hsl(0, 0%, 8%);
+  background-color: #F2059F;
   color: #fff;
   border: none;
   font-size: 1rem;
@@ -42,35 +51,75 @@ main button {
   border-radius: 0.4rem;
   margin-top: 1rem;
   cursor: pointer;
+  width: 100%;
+}
+
+main button:hover {
+  background-color: #fff;
+  color: #F2059F;
+  cursor: pointer;
+
+}
+main button:active {
+  background-color: #fff;
+  color: #F2059F;
+  cursor: pointer;
+
 }
 
 #text-side {
-  margin-top: 5rem;
+  /* margin-top:1px;*/
+  display: flex;
+  
 }
 
-.img-side img{
-  height: 25rem;
+.secondtext {
+  font-size: 22px;
+  display: flex;
+  background-color: transparent;
+  height: 60%;
+  width: 100%;
+  text-align: left;
+  
 }
+
+
 
 /* Responsive */
 @media (min-width: 680px) and (max-width: 1024px) {
-main {
-  align-items: self-end;
-}
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+   
+  }
 
-.img-side img{
-  height: 19rem;
+  
 }
+.text-side {
+  align-items: center;
+  margin-left: 0px;
+
+}
+main button:active {
+  background-color: #fff;
+  color: #F2059F;
+  cursor: pointer;
+
 }
 
 @media (min-width: 300px) and (max-width: 680px) {
-main {
-  grid-template-columns: 100%;
-  margin: 0 auto;
-  justify-items: center;
-}
-
-.img-side img{
-  height: 15rem;
-}
+  main {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+  }
+  main button:active {
+    background-color: #fff;
+    color: #F2059F;
+    cursor: pointer;
+  
+  }
+ 
 }

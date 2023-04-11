@@ -1,32 +1,71 @@
-.this {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: 33% 33% 33%;
-    text-decoration: none;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.container {
+    margin-top: 140px;
+    margin-bottom: 150px;
+
 }
 
-.marginTop {
-    margin-top: 140px;
+.this {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(3, 33%);
+    text-decoration: none;
+    /* flex-wrap: wrap; */
+   margin-left: 160px;
+   margin-right: 160px;
+}
+
+.cardContent {
+    height: 410px;
+    /* width: 365px; */
 }
 
 .favButton {
     position: relative;
-    left: 170px;
-    top: 90px;
-    padding: 2px;
+    left: 160px;
+    top: 30px;
+    padding: 3px;
     border-radius: 20px;
     background-color: black;
     color: aliceblue;
     z-index: 1;
-    border:none;
+    border: none;
 }
 
 .favButton:hover {
     cursor: pointer;
 }
-.favButtonActive{
+
+.favButtonActive {
     background-color: aqua;
+}
+
+
+
+@media (min-width: 780px) and (max-width: 1338px) {
+
+    .this {
+        margin: 0px;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+}
+
+
+
+@media (min-width: 300px) and (max-width: 780px) {
+
+    .this {
+        margin: 0px;
+        grid-template-columns: repeat(1, 100%);
+        justify-content: center;
+        align-items: center;
+    }
+    .favButton {
+        left: 140px;
+    }
 }

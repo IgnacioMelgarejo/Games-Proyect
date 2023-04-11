@@ -9,14 +9,11 @@ estilos para fondo claro
 } */
 
 .mainContainerDetail {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  /* border: 1px solid #ccc; */
+  
+  align-items: left;
   background-color: rgba(23, 21, 21, 0.2);
   backdrop-filter: blur(2px);
-  color: #717d7e;
+  color: #c9c9c9;
   border-radius: 10px;
   padding: 20px;
   max-width: 1000px;
@@ -38,43 +35,45 @@ estilos para fondo claro
 
 h1 {
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   font-size: 34px;
-  text-align: center;
+  text-align: left;
+  color:#03738C
 }
 
 .extras {
-  width: 100%;
+ 
   text-align: left;
-  margin-top: 30px;
+  
 }
 
 .description {
   margin-bottom: 0px;
   margin-top: 40px;
   font-size: 20px;
+  text-align: left;
 }
 
-
-
-.yellow {
-    background-color:#efb810;
+.starsContainer{
+  color:#c9c9c9;
+}
+.starsContainer i {
+  color:#F2059F;
 }
 
+.fuchsia {
+  color: #F2059F;
+}
 
 .numerSizeFont {
   margin-bottom: 0px;
-  /* font-size: large; */
+  
 }
 
 
 .platformsReleased{
-  /* font-size: large; */
-  /* display: inline-block; */
-  width: 50%;
-  height: 160px;
   margin-bottom: 0px;
-  /* margin-top: 30px; */
+  margin-top: 10px;
   
 }
 .platformsReleased p{
@@ -82,7 +81,7 @@ h1 {
 }
 
 .platformsReleased > * + * {
-  margin-top: 60px;
+  margin-top: 10px;
 }
 
 

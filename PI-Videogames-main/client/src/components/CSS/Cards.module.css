@@ -15,17 +15,15 @@ sombras para fondo claro
     /* Chrome 10-25, Safari 5.1-6 */
     /* background: linear-gradient(to left, #434343, #000000); */
     /*W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
     color: #eef2f3;
     /*es oscuro pero transparente*/
     backdrop-filter: blur(2px);
     /*transparenta*/
     width: 365px;
     /*El ancho que le quiero dar*/
-    height: 385px;
+    height: 393px;
     position: relative;
-    margin: 60px auto;
+    margin: auto;
     /*a 60px del margen*/
     border-radius: 10px;
     /*los tres hacen una sombra que sobresale un poco del fondo */
@@ -42,7 +40,7 @@ sombras para fondo claro
     backdrop-filter: blur(2px);
     transform: traslateY(-15px);
     /* box-shadow: 0 12px 16px rgb(0, 0, 0, 0, 0.2); */
-    box-shadow: 1px 3px 5px rgba(115, 115, 115, 0.6);
+    box-shadow: 1px 3px 5px #F2059F;
 
 }
 
@@ -59,7 +57,7 @@ sombras para fondo claro
 
 .detailsContent {
     margin-top: 2px;
-    font-size: large;
+    font-size: 16px;
     text-decoration: none;
     color: #c9c9c9;
     display: flex;
@@ -68,22 +66,59 @@ sombras para fondo claro
 }
 
 .detailsContent h3 {
-    text-align: center;
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 15px;
+    font-size: 18px;
+    color:#03738C;
 }
+
+
 
 .cardContent {
     margin-left: 15px;
-    margin-top: 25px;
+    margin-top: 10px;
 }
 
+.buttonDetails {
+        display: inline-block;
+        background-color: #F2059F;
+        color: #c9c9c9;
+        border: none;
+        font-size: 16px;
+        font-weight:bolder;
+        padding: 0.8rem 1rem;
+        border-radius: 0.4rem;
+        margin-top: 0.7rem;
+        cursor: pointer;
+        width: 50%;
+        height: 40px;
+      }
 
-
-
-.yellow {
-    background-color: #efb810;
+.starsContainer{
+    color:#c9c9c9;
+}
+.starsContainer i {
+    color:#F2059F;
 }
 
-.favButton{
-    display: flex;
-    align-items: flex-end;
+.fuchsia {
+    color: #F2059F;
+    
+}
+
+@media (min-width: 300px) and (max-width: 680px) {
+
+    .mainContainerCard{
+        width: 315px;
+    }
+
+    .gameCard img {
+        width: 315px;
+        
+    }
+
+    .favButton{
+        margin-left: 0px;
+    }
 }

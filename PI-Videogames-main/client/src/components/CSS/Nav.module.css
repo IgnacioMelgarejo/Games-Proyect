@@ -37,10 +37,12 @@
 
 
 .logo {
+    margin-top: 5px;
     font-weight: bolder;
     font-size: 65px;
     color: white;
-
+    height: 75px;
+    /* color: #F2059F */
 }
 
 .toggle {

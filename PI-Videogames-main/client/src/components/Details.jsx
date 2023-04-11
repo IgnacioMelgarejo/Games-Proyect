@@ -29,12 +29,12 @@ const Details = (props) => {
 
 
       <div className={s.mainContainerDetail}>
-        <h1>{game.name}</h1>
+
 
         <img className={s.img} src={game[0] ? game[0].image : game.image} alt="img not found" />
 
+        <h1>{game.name}</h1>
         <div className={s.extras}>
-
 
           <div className={s.platformsReleased}>
 
@@ -43,43 +43,40 @@ const Details = (props) => {
               <p className="numerSizeFont">{gameRating}</p>{""}
 
               <i
-                className={`far fa-star ${gameRating >= 1 ? "fas fa-star yellow" : ""}`}
+                className={`far fa-star ${gameRating >= 1 ? `fas fa-star ${s.fuchsia}`  : ""}`}
               ></i>
 
               <i
-                className={`far fa-star ${gameRating >= 2 ? "fas fa-star yellow" : ""}`}
+                className={`far fa-star ${gameRating >= 2 ? `fas fa-star ${s.fuchsia}`  : ""}`}
               ></i>
 
               <i
-                className={`far fa-star ${gameRating >= 3 ? "fas fa-star yellow" : ""
-                  }`}
+                className={`far fa-star ${gameRating >= 3 ? `fas fa-star ${s.fuchsia}`  : ""}`}
               ></i>
 
               <i
-                className={`far fa-star ${gameRating >= 4 ? "fas fa-star yellow" : ""
-                  }`}
+                className={`far fa-star ${gameRating >= 4 ? `fas fa-star ${s.fuchsia}`  : ""}`}
               ></i>
 
               <i
-                className={`far fa-star ${gameRating >= 5 ? "fas fa-star yellow" : ""
-                  }`}
+                className={`far fa-star ${gameRating >= 5 ? `fas fa-star ${s.fuchsia}`  : ""}`}
               ></i>
 
             </div>
             <p>Gender: {game[0] ? game[0].genders.map(e => e.name).join(", ") : game.gender}</p>
-            
-            
+
+
           </div>
 
 
           <div className={s.platformsReleased}>
-          <p>Released: {game[0] ? game[0].released : game.released}</p>
-          <p>Platforms: {game[0] ? game[0].platforms : game.platforms}</p>
-            
+            <p>Released: {game[0] ? game[0].released : game.released}</p>
+            <p>Platforms: {game[0] ? game[0].platforms : game.platforms}</p>
+
           </div>
 
         </div>
-        <br/>
+        <br />
         <p className={s.description}> {game[0] ? game[0].description : game.description}</p>
       </div>
     </div>

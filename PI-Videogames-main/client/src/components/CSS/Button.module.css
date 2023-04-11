@@ -1,25 +1,29 @@
-.buttonBack{
-   
+.buttonBack {
     height: 60px;
 }
-.buttonBack button{
+
+.buttonBack button {
     margin-top: 15px;
     height: 40px;
-    border-radius: 50px;
-    background-color: #b5b5b5;
+    width: 18rem;
+    border-radius: 0.4rem;
+    background-color: #F2059F;
+    color: #fff;
     cursor: pointer;
-    padding: 15px 15px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
     border: none;
-    box-shadow: 0 4px #999;    
+    /* box-shadow: 0 4px #999; */
 }
 
-.buttonBack button:hover{
-    background-color: lightgray
+.buttonBack button:hover {
+    background-color: #fff;
+    color: #F2059F;
+    cursor: pointer;
 }
 
-.buttonBack button:active{
-    background-color: #8990a2;
-    box-shadow: 0 5px #515151;
-    transform: translateY(2px);
+.buttonBack button:active {
+    background-color: #fff;
+    color: #F2059F;
+    cursor: pointer;
 }
-

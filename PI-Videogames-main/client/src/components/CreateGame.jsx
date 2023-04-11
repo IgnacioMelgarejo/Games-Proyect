@@ -176,8 +176,8 @@ const CreateGame = () => {
             </Link>
 
             <form className={s.formRegister} onSubmit={(e) => handleSubmit(e)}>
-                <h4 >Crea tu Videojuego</h4>
-                <div>
+                <h4 >CREA TU VIDEOJUEGO</h4>
+                <div className={s.div}>
 
                     <input
                         className={s.input}
@@ -231,7 +231,7 @@ const CreateGame = () => {
 
 
                 <div className={s.div}>
-                    <label>GENRES</label><br />
+                    <p>GENRES</p>
                     <select className={s.dropBotton} onChange={(e) => handleSelectGenres(e)}>
                         <option value="all">All</option>
                         {gender?.map((e) => {
@@ -274,7 +274,7 @@ const CreateGame = () => {
                                     {platform.name}
                                 </option>
                             );
-                        })}
+                        })}{" "}
                     </select>
                     {error.platforms && (
                         <span className={s.red} >{error.platforms}</span>
@@ -311,12 +311,12 @@ const CreateGame = () => {
                 </div>
 
                 {Object.keys(error).length ? (
-                    <div >
-                        <input className={s.input} type="submit" disabled name="Send" />
+                    <div  >
+                        <input className={s.inputNoSubmit} type="submit" disabled name="Send" />
                     </div>
                 ) : (
                     <div>
-                        <input className={s.input} type="submit" name="Send" />
+                        <input className={s.inputSubmit} type="submit" name="Send" />
                     </div>
                 )}
             </form>

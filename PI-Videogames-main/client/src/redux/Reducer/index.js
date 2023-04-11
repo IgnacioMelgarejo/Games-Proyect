@@ -18,7 +18,7 @@ const rootReducer = (state = initialState, action) => {
                 allGames: action.payload
             }
         case "GET_GENDER":
-            
+
             return {
                 ...state,
                 gender: action.payload
@@ -88,10 +88,12 @@ const rootReducer = (state = initialState, action) => {
             // console.log("favoriteSelected",favoriteSelected)
             let favoriteIndex = state.favorites.indexOf(favoriteSelected)
             // console.log("favoriteIndex",favoriteIndex)
+
+
+            !state.favorites.includes(favoriteSelected) ? state.favorites.push(favoriteSelected) : favoriteIndex !== -1 ? state.favorites.splice(favoriteIndex, 1) : console.log("funciona bien")
             
 
-            !state.favorites.includes(favoriteSelected)?state.favorites.push(favoriteSelected): favoriteIndex !== -1? state.favorites.splice(favoriteIndex, 1):console.log("funciona bien")
-            console.log("REDUCER",state.favorites)
+
             return {
                 ...state,
                 ...state.favorites
