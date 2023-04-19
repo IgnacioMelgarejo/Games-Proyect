@@ -19,16 +19,17 @@ nav .searchBox{
 
 
 .searchBox:hover > .searchButton {
-  background: rgb(225, 221, 221);
-  color : #2f3640;
+  background: rgb(225, 221, 221);/* el circulo del medio cuadno esta abierta*/
+  color : #F2059F;/* la lupa cuando esta abierto*/
   cursor:pointer;
 }
 
 .searchButton {
-    color: white; /*Es la lupa*/
+    color: #03738C; /*Es la lupa*/
     float: right;
     width: 40px;
     height: 40px;
+    /* border-color: #F2059F; */
     border-radius: 50%;
     background: #0b0c0c;/* color del circulo de adentro*/
     display: flex;

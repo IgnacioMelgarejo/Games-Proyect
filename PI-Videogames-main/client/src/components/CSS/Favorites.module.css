@@ -1,11 +1,11 @@
 .content {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 33%);
     text-decoration: none;
-    flex-wrap: wrap;
-    justify-content: space-around;
+   margin-left: 160px;
+   margin-right: 160px;
 }
 
 .favoritesTitle{

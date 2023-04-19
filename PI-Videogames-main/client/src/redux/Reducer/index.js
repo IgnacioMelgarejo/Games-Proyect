@@ -29,33 +29,29 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 games: nameGame
             }
-        case "ORDER_BY_NAME":
-            let sortByName = action.payload === "Order by Name" ? state.games :
-                action.payload === "Asc" ?
-                    state.games.sort((a, b) => {
-                        if (a.name > b.name) return 1
-                        if (b.name > a.name) return -1
-                        return 0
-                    }) : state.games.sort((a, b) => {
-                        if (a.name > b.name) return -1
-                        if (b.name > a.name) return 1
-                        return 0
-                    })
+        case "ORDER_BY":
+
+            let sortByName = action.payload === "Order by" ? state.games :
+                action.payload === "Rating" ? state.games.sort((a, b) => b.rating - a.rating) :
+                    action.payload === "MinRating" ? state.games.sort((a, b) => a.rating - b.rating) :
+                        action.payload === "DataBase" ? state.games.filter(e => e.genders) :
+                            action.payload === "Asc" ?
+                                state.games.sort((a, b) => {
+                                    if (a.name > b.name) return 1
+                                    if (b.name > a.name) return -1
+                                    return 0
+                                }) : state.games.sort((a, b) => {
+                                    if (a.name > b.name) return -1
+                                    if (b.name > a.name) return 1
+                                    return 0
+                                })
             return {
                 ...state,
                 games: sortByName
             }
 
         case "ORDER_BY_GENDER":
-            // const genderName = action.payload
-            // const result = genderName === "Order by Gender" ? state.games :
-            //     state.games.filter(e => e.gender?.includes(genderName))
-            //     console.log(result)
-
-            // return {
-            //     ...state,
-            //     games: result
-            // }
+            
             let genderName = action.payload
             state.games = state.allGames.filter(e => e.gender?.includes(genderName))
             if (action.payload === "Order by Gender") state.games = state.allGames
@@ -83,21 +79,26 @@ const rootReducer = (state = initialState, action) => {
             }
         case "GET_FAVORITES":
             let id = action.payload
-            //    console.log("payload",action.payload)
+            
             let favoriteSelected = state.allGames.find(e => e.id.toString() === id)
-            // console.log("favoriteSelected",favoriteSelected)
+            
             let favoriteIndex = state.favorites.indexOf(favoriteSelected)
-            // console.log("favoriteIndex",favoriteIndex)
+            
 
 
             !state.favorites.includes(favoriteSelected) ? state.favorites.push(favoriteSelected) : favoriteIndex !== -1 ? state.favorites.splice(favoriteIndex, 1) : console.log("funciona bien")
-            
 
 
             return {
                 ...state,
                 ...state.favorites
+            }
 
+        
+        case "CLEAR":
+            return {
+                ...state,
+                details: action.payload
             }
         default: return state
     }

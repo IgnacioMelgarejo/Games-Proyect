@@ -34,7 +34,7 @@ export const getNameGame = (name) => {
 export const orderByName = (payload) => {
 
     return {
-        type: "ORDER_BY_NAME",
+        type: "ORDER_BY",
         payload
 
     }
@@ -48,6 +48,13 @@ export const orderByGender = (payload) => {
     }
 }
 
+
+export function clear() {
+    return {
+      type: "CLEAR",
+      payload: []
+    }
+  }
 
 export const postGame = (post) => {
     console.log(post)

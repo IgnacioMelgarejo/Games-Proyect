@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getDetails } from "../redux/actions";
+import { getDetails, clear } from "../redux/actions";
 import { Link } from "react-router-dom";
+import Spinner from "./Spinner";
 import s from "./CSS/Details.module.css";
 import sB from "./CSS/Button.module.css"
 
@@ -15,6 +16,9 @@ const Details = (props) => {
 
   useEffect(() => {
     dispatch(getDetails(props.match.params.id));
+    return () => {
+      dispatch(clear());
+    };
   }, [dispatch, props.match.params.id]);
 
   return (
@@ -24,15 +28,14 @@ const Details = (props) => {
 
       <Link to="/home">
         <div className={sB.buttonBack}><button >BACK HOME</button></div>
-
       </Link>
-
 
       <div className={s.mainContainerDetail}>
 
 
-        <img className={s.img} src={game[0] ? game[0].image : game.image} alt="img not found" />
-
+        {!game.image ? <Spinner /> :
+          <img className={s.img} src={game[0] ? game[0].image : game.image} alt="img not found" />
+        }
         <h1>{game.name}</h1>
         <div className={s.extras}>
 
@@ -43,28 +46,30 @@ const Details = (props) => {
               <p className="numerSizeFont">{gameRating}</p>{""}
 
               <i
-                className={`far fa-star ${gameRating >= 1 ? `fas fa-star ${s.fuchsia}`  : ""}`}
+                className={`far fa-star ${gameRating >= 1 ? `fas fa-star ${s.fuchsia}` : ""}`}
               ></i>
 
               <i
-                className={`far fa-star ${gameRating >= 2 ? `fas fa-star ${s.fuchsia}`  : ""}`}
+                className={`far fa-star ${gameRating >= 2 ? `fas fa-star ${s.fuchsia}` : ""}`}
               ></i>
 
               <i
-                className={`far fa-star ${gameRating >= 3 ? `fas fa-star ${s.fuchsia}`  : ""}`}
+                className={`far fa-star ${gameRating >= 3 ? `fas fa-star ${s.fuchsia}` : ""}`}
               ></i>
 
               <i
-                className={`far fa-star ${gameRating >= 4 ? `fas fa-star ${s.fuchsia}`  : ""}`}
+                className={`far fa-star ${gameRating >= 4 ? `fas fa-star ${s.fuchsia}` : ""}`}
               ></i>
 
               <i
-                className={`far fa-star ${gameRating >= 5 ? `fas fa-star ${s.fuchsia}`  : ""}`}
+                className={`far fa-star ${gameRating >= 5 ? `fas fa-star ${s.fuchsia}` : ""}`}
               ></i>
 
             </div>
-            <p>Gender: {game[0] ? game[0].genders.map(e => e.name).join(", ") : game.gender}</p>
 
+            <p>
+              Gender: {game[0] ? game[0].genders.map(e => e.name).join(", ") : game.gender}
+            </p>
 
           </div>
 
@@ -72,13 +77,17 @@ const Details = (props) => {
           <div className={s.platformsReleased}>
             <p>Released: {game[0] ? game[0].released : game.released}</p>
             <p>Platforms: {game[0] ? game[0].platforms : game.platforms}</p>
-
           </div>
 
         </div>
         <br />
-        <p className={s.description}> {game[0] ? game[0].description : game.description}</p>
+
+        <p className={s.description}>
+          {game[0] ? game[0].description : game.description}
+        </p>
+
       </div>
+
     </div>
   );
 };

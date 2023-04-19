@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import img from './image/landing-image.png';
 import styles from "./CSS/LandingPage.module.css";
 
 

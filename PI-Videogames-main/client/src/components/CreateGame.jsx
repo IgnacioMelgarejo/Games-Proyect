@@ -10,7 +10,7 @@ const CreateGame = () => {
     const history = useHistory();
     const gender = useSelector((state) => state.gender);
     const platforms = useSelector((state) => state.platforms);
-    
+
     const [error, setError] = useState({});
 
     const [input, setInput] = useState({
@@ -33,25 +33,29 @@ const CreateGame = () => {
 
         if (!input.name) {
             error.name = "Name is required";
-        } else if (input.name.length > 50) {
+        }
+        if (input.name.length > 50) {
             error.name = "Name is too long";
         }
 
         if (!input.description) {
             error.description = "Description is required ";
-        } else if (input.description.length > 1500) {
+        }
+        if (input.description.length > 1500) {
             error.description = "Description is too long. (Max = 1500 characters)";
         }
 
         if (!input.rating) {
             error.rating = "Rating is required";
-        } else if (input.rating > 5 || input.rating < 0) {
+        }
+        if (input.rating > 5 || input.rating < 0) {
             error.rating = "Rating must range between 0 to 5";
         }
 
         if (!input.released) {
             error.released = "Date of release is required";
-        } else if (input.released.length < 10) {
+        }
+        if (input.released.length < 10) {
             error.released = "Date of release is to long";
         }
         if (!input.image) {
@@ -65,7 +69,9 @@ const CreateGame = () => {
         if (!input.platforms[0]) {
             error.platforms = "Minimun one Platform is required";
         }
-
+        if (input.image === '' && input.description === '' && input.rating === '' && input.name === '') {
+            error.submit = "No se puede enviar el formulario vacio"
+        }
         return error;
     }
 
@@ -81,7 +87,7 @@ const CreateGame = () => {
             })
         );
 
-        
+
     }
 
     const handleSelectGenres = (e) => {
@@ -105,7 +111,7 @@ const CreateGame = () => {
     }
 
     const handleSelectPlatform = (e) => {
-        
+
         setInput({
             ...input,
             platforms: [...input.platforms, e.target.value],
@@ -135,7 +141,6 @@ const CreateGame = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(e.data);
 
         let crear = {
             name: input.name,
@@ -146,7 +151,7 @@ const CreateGame = () => {
             platforms: input.platforms.join(", "),
             gender: input.gender.join(", "),
         };
-        console.log(crear)
+
 
         dispatch(postGame(crear));
 
@@ -160,8 +165,12 @@ const CreateGame = () => {
             gender: [],
         });
 
-        alert("VideoGame Created");
-        history.push("/home");
+        if (input.image === '' && input.description === '' && input.rating === '' && input.name === '') {
+            alert("No se puede enviar el formulario vacio")
+        } else {
+            alert("VideoGame Created");
+            history.push("/home");
+        }
     }
 
 
@@ -175,7 +184,7 @@ const CreateGame = () => {
 
             </Link>
 
-            <form className={s.formRegister} onSubmit={(e) => handleSubmit(e)}>
+            <form className={s.formRegister} onSubmit={(e) => handleSubmit(e)} >
                 <h4 >CREA TU VIDEOJUEGO</h4>
                 <div className={s.div}>
 
@@ -187,7 +196,7 @@ const CreateGame = () => {
                         onChange={handleOnChange}
                         placeholder="Ingrese nombre"
                     />
-                    {error.name && <span  className={s.red}>{error.name}</span>}
+                    {error.name && <span className={s.red}>{error.name}</span>}
                 </div >
 
 
@@ -234,30 +243,28 @@ const CreateGame = () => {
                     <p>GENRES</p>
                     <select className={s.dropBotton} onChange={(e) => handleSelectGenres(e)}>
                         <option value="all">All</option>
-                        {gender?.map((e) => {
+                        {gender?.map((g) => {
                             return (
-                                
-                                <option key={e.id} value={e.name}>
-                                    {e.name}
+                                <option key={g.id} value={g.name}>
+                                    {g.name}
                                 </option>
                             );
                         })}
                     </select>
-                    {error.gender && <span  className={s.red} >{error.gender}</span>}
+                    {error.gender && <span className={s.red} >{error.gender}</span>}
                 </div>
 
-                {/* <div  className={s.dropConteiner}>
-                                
-                            </div> */}
+
+
                 <div className={s.div}>
                     {input.gender?.map((e) => {
                         return (
-                            <div  className={s.dropConteiner}>
-                                <div className={s.dropItem} key={e.id}>
-                                    {e}{" "} 
-                                <button onClick={() => handleDeleteGenres(e)}>X</button>
+                            <div key={e} className={s.dropConteiner}>
+                                <div className={s.dropItem} >
+                                    {e}{" "}
+                                    <button onClick={() => handleDeleteGenres(e)}>X</button>
                                 </div>
-                                
+
                             </div>
                         );
                     })}{" "}
@@ -285,10 +292,9 @@ const CreateGame = () => {
                 <div className={s.div}>
                     {input.platforms?.map((p) => {
                         return (
-                            <div className={s.dropConteiner}>
-                                <div className={s.dropItem} key={p.id}>{p}
-                                
-                                <button onClick={() => handleDeletePlatforms(p)}>X</button>
+                            <div key={p} className={s.dropConteiner}>
+                                <div className={s.dropItem} >{p} {" "}
+                                    <button onClick={() => handleDeletePlatforms(p)}>X</button>
                                 </div>
                             </div>
                         );
@@ -315,7 +321,7 @@ const CreateGame = () => {
                         <input className={s.inputNoSubmit} type="submit" disabled name="Send" />
                     </div>
                 ) : (
-                    <div>
+                    <div >
                         <input className={s.inputSubmit} type="submit" name="Send" />
                     </div>
                 )}

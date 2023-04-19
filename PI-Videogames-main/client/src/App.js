@@ -17,7 +17,7 @@ function App() {
           <Route path="/create" component={CreateGame}/>
           <Route path="/favorites" component={Favorites}/>
           <Route path="/game/:id" component={Details}/>
-          <Route component={NotFound}/>
+          <Route path="*" component={NotFound} />
         </Switch>
       </div>
     </BrowserRouter>

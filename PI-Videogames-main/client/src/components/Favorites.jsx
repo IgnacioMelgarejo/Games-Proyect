@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { getFavorites } from '../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -13,14 +13,14 @@ const Favorites = () => {
   let favoritos = useSelector((state) => state.favorites)
   const [savedGames, setSavedGames] = useState({});
   const dispatch = useDispatch()
-  console.log("FAVORITOS EN COMP FAV",favoritos)
 
-  const handleFavorite = (e)=>{
+
+  const handleFavorite = (e) => {
     e.preventDefault();
     dispatch(getFavorites(e.target.value))
     const gameId = e.target.value;
-  setSavedGames({...savedGames, [gameId]: !savedGames[gameId]});
-    
+    setSavedGames({ ...savedGames, [gameId]: !savedGames[gameId] });
+
   };
 
   return (
@@ -38,12 +38,12 @@ const Favorites = () => {
 
         {favoritos?.map((e) => {
           const isFavorite = favoritos.some((f) => f.id === e.id);
-          
-          return (
-            <div   key={e.id}>
-               <button className={h.favButton} value={e.id} onClick={(e)=>handleFavorite(e)}>
 
-              {isFavorite?  "❤️":"🤍" }
+          return (
+            <div key={e.id}>
+              <button className={h.favButton} value={e.id} onClick={(e) => handleFavorite(e)}>
+
+                {isFavorite ? "❤️" : "🤍"}
               </button>
 
               <Link className={s.linkCard} to={`/game/${e.id}`}>

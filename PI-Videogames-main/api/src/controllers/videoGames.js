@@ -43,7 +43,7 @@ const get_VideoGames = async (req, res) => {
         if (name) {
             const VideoGameName = videoGames.filter(
                 e => e.name.toLowerCase().includes(name.toLowerCase()))
-            res.status(200).send(VideoGameName)
+            VideoGameName ? res.status(200).send(VideoGameName) : res.status(404).send({ error: 'Game not found' })
         } else {
             res.status(200).send(videoGames)
         }
@@ -79,7 +79,7 @@ const post_Video_Games = async (req, res) => {
         console.log("genderACA", gender)
 
         let genderArray = gender.split(", ");
-        console.log("genderArray",genderArray )
+        console.log("genderArray", genderArray)
 
         let genderDb = await Gender.findAll({
             where: {
