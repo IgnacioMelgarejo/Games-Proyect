@@ -6,7 +6,6 @@ const genderRouter = require("./genderRouter.js")
 
 const router = Router();
 
-
 router.use("/videogames", videoGamesRouter);
 
 router.use("/gender", genderRouter);

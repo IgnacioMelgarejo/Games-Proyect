@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const getVideoGames = () => {
     return async (dispatch) => {
-        const json = await axios("http://localhost:3001/videoGames")
+        const json = await axios("/videoGames")
         return dispatch({
             type: "GET_GAMES",
             payload: json.data
@@ -11,7 +11,7 @@ export const getVideoGames = () => {
 }
 export const getGender = () => {
     return async (dispatch) => {
-        const json = await axios("http://localhost:3001/gender")
+        const json = await axios("/gender")
         return dispatch({
             type: "GET_GENDER",
             payload: json.data
@@ -22,7 +22,7 @@ export const getGender = () => {
 
 export const getNameGame = (name) => {
     return async function (dispatch) {
-        let json = await axios(`http://localhost:3001/videoGames?name=${name}`);
+        let json = await axios(`/videoGames?name=${name}`);
         return dispatch({
             type: "GET_NAME_GAME",
             payload: json.data
@@ -59,7 +59,7 @@ export function clear() {
 export const postGame = (post) => {
     console.log(post)
     return async function (dispatch) {
-        const json = await axios.post(`http://localhost:3001/videogames`, post);
+        const json = await axios.post(`/videogames`, post);
         return  dispatch ({
             type: "POST_GAME",
             payload: json.data
@@ -69,7 +69,7 @@ export const postGame = (post) => {
 
 export function getAllPlatforms() {
     return async function (dispatch) {
-        const json = await axios.get(`http://localhost:3001/videogames/platforms`)
+        const json = await axios.get(`/videogames/platforms`)
         const platformss = json.data
         return dispatch({
             type: 'GET_ALL_PLATFORMS',
@@ -79,7 +79,6 @@ export function getAllPlatforms() {
 }
 
 export const getFavorites = (payload) => {
-    // console.log("el de favorites en acion",payload)
     return {
         type: "GET_FAVORITES",
         payload
@@ -90,7 +89,7 @@ export const getFavorites = (payload) => {
 export const getDetails = (id) => {
     return async function (dispatch) {
         try {
-            let json = await axios(`http://localhost:3001/videogames/${id}`);
+            let json = await axios(`/videogames/${id}`);
             return dispatch({
                 type: "GET_DETAILS",
                 payload: json.data

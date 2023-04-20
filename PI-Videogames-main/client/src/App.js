@@ -6,6 +6,8 @@ import CreateGame from './components/CreateGame';
 import NotFound from './components/NotFound';
 import Details from './components/Details';
 import Favorites from './components/Favorites';
+import axios from 'axios';
+axios.defaults.baseURL = "http://localhost:3001/";
 
 function App() {
   return (
